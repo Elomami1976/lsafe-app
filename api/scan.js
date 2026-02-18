@@ -34,6 +34,7 @@ export default async function handler(req, res) {
     origin.includes('localhost') ||
     origin.includes('127.0.0.1') ||
     origin.includes('lsafe.io') ||
+    origin.includes('tryanswerly.site') ||
     origin.includes('vercel.app')
   ) {
     res.setHeader('Access-Control-Allow-Origin', origin);

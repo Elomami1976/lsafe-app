@@ -37,9 +37,11 @@ const ALLOWED_ORIGINS = [
   'http://localhost:5173',
   'http://localhost:4173',
   'http://127.0.0.1:5173',
-  // Add your Hostinger domain(s) here:
+  // Add your domain(s) here:
   'https://lsafe.io',
   'https://www.lsafe.io',
+  'https://tryanswerly.site',
+  'https://www.tryanswerly.site',
   process.env.FRONTEND_URL, // optional env override
 ].filter(Boolean);
 
