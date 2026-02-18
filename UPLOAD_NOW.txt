@@ -1,0 +1,29 @@
+# 🚀 Quick Upload to Hostinger
+
+## Your file is ready: `lsafe-static.zip` (390 KB)
+
+### 3 Simple Steps:
+
+1. **Login to Hostinger**
+   - Go to hPanel → File Manager
+   - Navigate to `public_html/`
+
+2. **Upload & Extract**
+   - Upload `lsafe-static.zip`
+   - Click "Extract" 
+   - Delete the zip file
+
+3. **Done!**
+   - Visit your domain - it works immediately!
+
+---
+
+## ✅ Your App Now:
+- Works 100% without backend
+- Does basic URL security checks
+- Runs entirely in the browser
+- No API or server needed
+
+The scanning feature now does **client-side analysis** checking for HTTPS, suspicious keywords, and domain structure.
+
+**Ready to upload! 🎉**

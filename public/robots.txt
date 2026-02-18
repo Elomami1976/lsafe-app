@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lsafe.io/sitemap.xml
+
+# Crawl-delay to reduce server load
+Crawl-delay: 10
+
+# Disallow admin or API paths if existed:
+# Disallow: /api/
+# Disallow: /admin/

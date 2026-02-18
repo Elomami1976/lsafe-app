@@ -1,0 +1,90 @@
+# Force correct MIME type for ads.txt (MUST be before mod_rewrite)
+<Files "ads.txt">
+  ForceType text/plain
+  Header set Cache-Control "no-cache, no-store, must-revalidate"
+  Header set Pragma "no-cache"
+  Header set Expires "0"
+  Header set Access-Control-Allow-Origin "*"
+</Files>
+
+# Ensure proper MIME types
+AddType text/plain .txt
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # CRITICAL: Serve static files directly BEFORE any redirects
+  # These files must be served without redirect chains
+  RewriteRule ^ads\.txt$ - [L,T=text/plain]
+  RewriteRule ^robots\.txt$ - [L,T=text/plain]
+  RewriteRule ^sitemap\.xml$ - [L,T=application/xml]
+  RewriteRule ^google[a-z0-9]+\.html$ - [L]
+  RewriteRule ^manifest\.json$ - [L]
+  RewriteRule ^sw\.js$ - [L]
+  RewriteRule ^llms\.txt$ - [L,T=text/plain]
+  RewriteRule ^_redirects$ - [L]
+  
+  # Force HTTPS (if not already)
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+  
+  # Force non-www
+  RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+  
+  # Standard SPA routing
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Disable directory browsing
+Options -Indexes
+
+# Enable gzip compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Browser caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # Cache static assets for a long time (they have hashed filenames)
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 year"
+  # Don't cache HTML files - users should always get the latest version
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# Cache-Control headers
+<IfModule mod_headers.c>
+  # HTML files: no cache, always revalidate
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+  
+  # Static assets with hashed filenames can be cached forever
+  <FilesMatch "\.(css|js|jpg|jpeg|png|gif|svg|ico|woff|woff2|ttf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

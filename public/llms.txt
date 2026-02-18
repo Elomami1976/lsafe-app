@@ -1,0 +1,28 @@
+LSafe URL Security Scanner
+
+Description:
+LSafe is a professional, privacy-first web app that performs instant URL safety analysis. It uses a multi-layered approach to evaluate links for malware, phishing, scam, and spam signals.
+
+Target Users:
+- Developers verifying embedded URLs
+- Email users checking suspicious links
+- Security teams doing quick risk assessments
+- Everyday users browsing safely
+
+Features:
+- Real-time risk scoring (0-100)
+- Known malware and phishing domain checks
+- Suspicious pattern detection
+- HTTPS and certificate checks
+- Redirect chain analysis
+- Privacy guaranteed with no URL logging
+- Progressive Web App with offline support
+
+Technology:
+- React (TypeScript) with Tailwind CSS frontend
+- Node.js + Express backend (optional)
+- Integrations planned with VirusTotal, Google Safe Browsing
+- Service Worker for offline use and caching
+
+SEO Keywords:
+URL safety checker, is this link safe, phishing detection, malware scanning, URL reputation, safe browsing, LSafe, link analyzer
