@@ -49,7 +49,11 @@ const Navigation: React.FC = () => {
             <div className="absolute inset-0 bg-blue-500/20 rounded-xl blur-xl group-hover:bg-blue-500/40 transition-all duration-300" />
             <img src={LSaveLogo} alt="LSafe Logo" className="h-10 w-10 relative z-10" />
           </motion.div>
-          <span className="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+          <span className={`font-bold text-2xl transition-colors duration-300 ${
+            scrolled 
+              ? 'bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400'
+              : 'text-white'
+          }`}>
             LSafe
           </span>
         </NavLink>
@@ -63,18 +67,29 @@ const Navigation: React.FC = () => {
                   to={item.to}
                   className={({ isActive }) =>
                     `relative px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
-                      isActive
-                        ? 'text-blue-600 dark:text-blue-400'
-                        : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                      scrolled
+                        ? isActive
+                          ? 'text-blue-600 dark:text-blue-400'
+                          : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                        : isActive
+                          ? 'text-white'
+                          : 'text-white/80 hover:text-white'
                     }`
                   }
                 >
                   {({ isActive }) => (
                     <>
-                      {isActive && (
+                      {isActive && scrolled && (
                         <motion.div
                           layoutId="navbar-indicator"
                           className="absolute inset-0 bg-blue-100 dark:bg-blue-500/20 rounded-xl"
+                          transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                        />
+                      )}
+                      {isActive && !scrolled && (
+                        <motion.div
+                          layoutId="navbar-indicator"
+                          className="absolute inset-0 bg-white/20 rounded-xl"
                           transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                         />
                       )}
@@ -91,7 +106,11 @@ const Navigation: React.FC = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={toggleTheme}
-            className="p-2.5 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors ml-2"
+            className={`p-2.5 rounded-xl transition-colors ml-2 ${
+              scrolled
+                ? 'bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700'
+                : 'bg-white/20 text-white hover:bg-white/30'
+            }`}
             aria-label="Toggle theme"
           >
             <AnimatePresence mode="wait">
@@ -123,7 +142,11 @@ const Navigation: React.FC = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="lg:hidden p-2.5 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors ml-2"
+            className={`lg:hidden p-2.5 rounded-xl transition-colors ml-2 ${
+              scrolled
+                ? 'bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700'
+                : 'bg-white/20 text-white hover:bg-white/30'
+            }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
