@@ -6,11 +6,11 @@ const LSaveLogo = '/LSave4.png';
 
 const navItems = [
   { to: '/', label: 'Home', icon: '🏠' },
+  { to: '/blog', label: 'Blog', icon: '📚' },
+  { to: '/safety-tips', label: 'Safety Tips', icon: '💡' },
   { to: '/about', label: 'About', icon: 'ℹ️' },
   { to: '/faq', label: 'FAQ', icon: '❓' },
   { to: '/contact', label: 'Contact', icon: '✉️' },
-  { to: '/privacy', label: 'Privacy', icon: '🔒' },
-  { to: '/terms', label: 'Terms', icon: '📄' },
 ];
 
 const Navigation: React.FC = () => {

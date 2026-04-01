@@ -43,13 +43,23 @@ const AdSenseControl: React.FC<{ enabled: boolean }> = ({ enabled }) => {
 
   useEffect(() => {
     if (enabled) {
-      // Small delay ensures the DOM content has actually painted before
-      // we allow AdSense to inject ads.
+      // Longer delay to ensure:
+      // 1. React has finished rendering the DOM
+      // 2. Content is visible and painted to screen
+      // 3. User sees meaningful publisher content before ads load
+      // This addresses AdSense "ads on screens without publisher content" policy
       const timer = setTimeout(() => {
         if (enabledRef.current) {
-          setAdPause(false);
+          // Additional check: verify there's actual content on the page
+          const mainContent = document.querySelector('main, section, article, [role="main"]');
+          const hasContent = mainContent && mainContent.textContent && mainContent.textContent.trim().length > 200;
+          
+          if (hasContent) {
+            setAdPause(false);
+          }
+          // If no substantial content found, keep ads paused
         }
-      }, 100);
+      }, 500);
       return () => {
         clearTimeout(timer);
         // When leaving a content-rich page, PAUSE ads so they don't

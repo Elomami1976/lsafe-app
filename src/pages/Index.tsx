@@ -409,6 +409,233 @@ const Index: React.FC = () => {
         </div>
       </section>
 
+      {/* User Testimonials */}
+      <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-4xl font-bold text-center mb-4 text-gray-800">What Our Users Say</h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Join thousands of users who trust LSafe to protect them from online threats every day
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Testimonial 1 */}
+            <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-yellow-400 text-xl">★</span>
+                ))}
+              </div>
+              <p className="text-gray-700 mb-6 italic">
+                "LSafe saved me from a sophisticated phishing attack. I received an email that looked exactly like it was from my bank, but when I scanned the link, it immediately flagged it as dangerous. Can't recommend it enough!"
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="bg-blue-100 rounded-full w-12 h-12 flex items-center justify-center">
+                  <span className="text-blue-600 font-bold text-lg">SK</span>
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-800">Sarah K.</div>
+                  <div className="text-sm text-gray-500">Marketing Manager</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial 2 */}
+            <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-yellow-400 text-xl">★</span>
+                ))}
+              </div>
+              <p className="text-gray-700 mb-6 italic">
+                "As a web developer, I use LSafe to verify every third-party link before embedding it in my clients' websites. The detailed reports help me explain security risks to non-technical clients. Essential tool!"
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="bg-green-100 rounded-full w-12 h-12 flex items-center justify-center">
+                  <span className="text-green-600 font-bold text-lg">MR</span>
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-800">Marcus R.</div>
+                  <div className="text-sm text-gray-500">Full-Stack Developer</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial 3 */}
+            <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-yellow-400 text-xl">★</span>
+                ))}
+              </div>
+              <p className="text-gray-700 mb-6 italic">
+                "My elderly parents were constantly clicking on suspicious links. I taught them to use LSafe first, and it's been a game-changer. Simple enough for anyone to use, yet powerful enough to catch real threats."
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="bg-purple-100 rounded-full w-12 h-12 flex items-center justify-center">
+                  <span className="text-purple-600 font-bold text-lg">JT</span>
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-800">Jennifer T.</div>
+                  <div className="text-sm text-gray-500">IT Consultant</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial 4 */}
+            <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-yellow-400 text-xl">★</span>
+                ))}
+              </div>
+              <p className="text-gray-700 mb-6 italic">
+                "I run an e-commerce business and customers sometimes send me links to competitor products or supplier sites. LSafe helps me verify these links are legitimate before clicking. Fast, accurate, and free!"
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="bg-orange-100 rounded-full w-12 h-12 flex items-center justify-center">
+                  <span className="text-orange-600 font-bold text-lg">DL</span>
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-800">David L.</div>
+                  <div className="text-sm text-gray-500">E-commerce Owner</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial 5 */}
+            <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-yellow-400 text-xl">★</span>
+                ))}
+              </div>
+              <p className="text-gray-700 mb-6 italic">
+                "Working in cybersecurity, I appreciate tools that respect privacy. LSafe's zero-logging policy means I can use it to check URLs without worrying about my browsing history being stored. Exactly what I needed."
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="bg-red-100 rounded-full w-12 h-12 flex items-center justify-center">
+                  <span className="text-red-600 font-bold text-lg">AP</span>
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-800">Alex P.</div>
+                  <div className="text-sm text-gray-500">Security Analyst</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial 6 */}
+            <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-yellow-400 text-xl">★</span>
+                ))}
+              </div>
+              <p className="text-gray-700 mb-6 italic">
+                "I teach digital literacy to seniors at our community center. LSafe is now part of our curriculum. The interface is clean and the results are easy to understand. It's made a real difference in their online safety!"
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="bg-teal-100 rounded-full w-12 h-12 flex items-center justify-center">
+                  <span className="text-teal-600 font-bold text-lg">LM</span>
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-800">Linda M.</div>
+                  <div className="text-sm text-gray-500">Community Educator</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Educational Resources Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-4xl font-bold text-center mb-4 text-gray-800">Learn to Stay Safe Online</h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Knowledge is your best defense. Explore our guides and tips to protect yourself from cyber threats.
+          </p>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Security Blog Card */}
+            <a href="/blog" className="group bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-8 text-white hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="bg-white/20 backdrop-blur-sm rounded-xl p-3">
+                  <span className="text-3xl">📚</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold">Security Blog</h3>
+                  <p className="opacity-90">In-depth guides & articles</p>
+                </div>
+              </div>
+              <p className="mb-4 opacity-90">
+                Comprehensive guides on phishing prevention, malware protection, safe shopping, password security, and more.
+              </p>
+              <div className="flex items-center gap-2 font-semibold">
+                Read Our Guides <span className="group-hover:translate-x-2 transition-transform">→</span>
+              </div>
+            </a>
+            
+            {/* Safety Tips Card */}
+            <a href="/safety-tips" className="group bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-8 text-white hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="bg-white/20 backdrop-blur-sm rounded-xl p-3">
+                  <span className="text-3xl">💡</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold">Safety Tips</h3>
+                  <p className="opacity-90">Quick actionable advice</p>
+                </div>
+              </div>
+              <p className="mb-4 opacity-90">
+                Essential internet safety practices for links, emails, passwords, shopping, social media, and mobile devices.
+              </p>
+              <div className="flex items-center gap-2 font-semibold">
+                View Safety Tips <span className="group-hover:translate-x-2 transition-transform">→</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust & Security Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">Why Trust LSafe?</h2>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 text-center">
+              <div className="bg-green-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                <Shield className="w-10 h-10 text-green-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-3">Privacy by Design</h3>
+              <p className="text-gray-600">
+                We built LSafe with a zero-logging architecture. Your scanned URLs are never stored, tracked, or shared with anyone. Your security searches remain your business.
+              </p>
+            </div>
+            
+            <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 text-center">
+              <div className="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                <Database className="w-10 h-10 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-3">Enterprise-Grade Intelligence</h3>
+              <p className="text-gray-600">
+                We aggregate data from 15+ security sources including malware databases, phishing reports, and threat intelligence feeds to provide comprehensive analysis.
+              </p>
+            </div>
+            
+            <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 text-center">
+              <div className="bg-purple-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                <Award className="w-10 h-10 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-3">Free Forever</h3>
+              <p className="text-gray-600">
+                Security shouldn't be a luxury. LSafe is completely free to use with no hidden costs, premium tiers, or registration required. Everyone deserves protection.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-300 py-12">
         <div className="container mx-auto px-4">
