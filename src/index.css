@@ -1,18 +1,224 @@
+/* Import Inter font - must be first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
 /* Custom styles for LSafe */
 
+:root {
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-hero: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #6366f1 100%);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+.dark {
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Inter', sans-serif;
-  @apply bg-white text-gray-900 transition-colors duration-200;
+  font-family: 'Inter', system-ui, sans-serif;
+  @apply bg-slate-50 text-gray-900 antialiased;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.1) 0, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.05) 0, transparent 50%);
+  min-height: 100vh;
 }
 
 .dark body {
-  @apply bg-gray-900 text-gray-100;
+  @apply bg-slate-900 text-gray-100;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.1) 0, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.08) 0, transparent 50%);
 }
 
-/* Any further custom animations or styles can be added here */
+/* Glassmorphism utility classes */
+@layer components {
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .glass-card {
+    @apply glass rounded-2xl shadow-soft transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply shadow-soft-lg;
+    transform: translateY(-2px);
+  }
+
+  .btn-primary {
+    @apply relative overflow-hidden px-6 py-3 font-semibold text-white rounded-xl;
+    @apply bg-gradient-to-r from-blue-600 to-indigo-600;
+    @apply hover:from-blue-500 hover:to-indigo-500;
+    @apply transition-all duration-300 shadow-lg hover:shadow-xl;
+    @apply transform hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-white/20 to-transparent;
+    @apply opacity-0 transition-opacity duration-300;
+  }
+
+  .btn-primary:hover::before {
+    @apply opacity-100;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 font-semibold rounded-xl;
+    @apply bg-white/80 backdrop-blur-sm text-gray-700;
+    @apply border border-gray-200;
+    @apply hover:bg-white hover:border-gray-300;
+    @apply transition-all duration-300;
+    @apply transform hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .dark .btn-secondary {
+    @apply bg-slate-800/80 text-gray-200 border-slate-700;
+    @apply hover:bg-slate-800 hover:border-slate-600;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+  }
+
+  .gradient-border {
+    @apply relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    @apply absolute -inset-[1px] rounded-2xl;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .gradient-border:hover::before {
+    opacity: 1;
+  }
+
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+  }
+
+  .mesh-gradient {
+    background-image: 
+      radial-gradient(at 40% 20%, rgba(99, 102, 241, 0.3) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgba(59, 130, 246, 0.3) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, rgba(168, 85, 247, 0.2) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, rgba(236, 72, 153, 0.2) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(34, 197, 94, 0.2) 0px, transparent 50%);
+  }
+
+  .hero-gradient {
+    background: linear-gradient(135deg, 
+      #0f172a 0%, 
+      #1e3a8a 25%, 
+      #3b82f6 50%, 
+      #6366f1 75%, 
+      #8b5cf6 100%
+    );
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-2;
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(59, 130, 246, 0.1);
+  }
+
+  .dark .card-hover:hover {
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(99, 102, 241, 0.2);
+  }
+
+  .glow-effect {
+    @apply relative;
+  }
+
+  .glow-effect::after {
+    content: '';
+    @apply absolute -inset-1 rounded-2xl opacity-0 blur-xl transition-opacity duration-500;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    z-index: -1;
+  }
+
+  .glow-effect:hover::after {
+    @apply opacity-30;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .container-narrow {
+    @apply max-w-5xl mx-auto px-4 sm:px-6;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+
+.dark ::-webkit-scrollbar-track {
+  @apply bg-slate-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-slate-600;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-500;
+}
+
+/* Selection color */
+::selection {
+  @apply bg-blue-500/30;
+}
+
+/* Focus styles */
+*:focus-visible {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+}
+
+.dark *:focus-visible {
+  @apply ring-offset-slate-900;
+}

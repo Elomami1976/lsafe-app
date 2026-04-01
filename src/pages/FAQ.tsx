@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import PageSEO from '../components/PageSEO';
 import AdSenseControl from '../components/AdSenseControl';
-import { Shield, Mail, AlertCircle } from 'lucide-react';
+import { pageVariants, staggerContainer, fadeInUp } from '../components/PageTransition';
+import { Shield, Mail, AlertCircle, ChevronDown } from 'lucide-react';
 
 const LSaveLogo = '/LSave4.png';
 
@@ -84,15 +86,37 @@ const faqs = [
   }
 ];
 
+const categoryColors: Record<string, { bg: string; text: string; darkBg: string; darkText: string }> = {
+  general: { bg: 'bg-blue-100', text: 'text-blue-700', darkBg: 'dark:bg-blue-900/30', darkText: 'dark:text-blue-400' },
+  security: { bg: 'bg-green-100', text: 'text-green-700', darkBg: 'dark:bg-green-900/30', darkText: 'dark:text-green-400' },
+  privacy: { bg: 'bg-purple-100', text: 'text-purple-700', darkBg: 'dark:bg-purple-900/30', darkText: 'dark:text-purple-400' },
+  technical: { bg: 'bg-orange-100', text: 'text-orange-700', darkBg: 'dark:bg-orange-900/30', darkText: 'dark:text-orange-400' },
+};
+
 const FAQ: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const filteredFaqs = activeFilter === 'all' 
     ? faqs 
     : faqs.filter(faq => faq.category === activeFilter);
 
+  const filterButtons = [
+    { key: 'all', label: 'All Questions', emoji: '🔍' },
+    { key: 'general', label: 'General', emoji: '📌' },
+    { key: 'security', label: 'Security', emoji: '🛡️' },
+    { key: 'privacy', label: 'Privacy', emoji: '🔒' },
+    { key: 'technical', label: 'Technical', emoji: '⚙️' },
+  ];
+
   return (
-    <div className="min-h-screen bg-white transition-colors duration-200">
+    <motion.div 
+      className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={pageVariants}
+    >
       <PageSEO
         title="FAQ - Frequently Asked Questions | LSafe URL Scanner"
         description="Find answers to common questions about LSafe URL scanner. Learn how our link checker works, what threats we detect, and how to stay safe online."
@@ -101,150 +125,183 @@ const FAQ: React.FC = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 transition-colors duration-200">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-4">Frequently Asked Questions</h1>
-          <p className="text-xl">Find answers to common questions about LSafe, URL security, and online safety.</p>
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 hero-gradient opacity-90"></div>
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
         </div>
+        
+        <motion.div 
+          className="container mx-auto px-4 text-center relative z-10"
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
+        >
+          <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl font-black mb-6 text-white">
+            Frequently Asked <span className="gradient-text">Questions</span>
+          </motion.h1>
+          <motion.p variants={fadeInUp} className="text-xl text-white/80 max-w-2xl mx-auto">
+            Find answers to common questions about LSafe, URL security, and online safety.
+          </motion.p>
+        </motion.div>
       </section>
 
       {/* Filter Buttons */}
-      <section className="bg-gray-50 py-6 border-b border-gray-200">
+      <section className="py-8 bg-white dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700 sticky top-16 z-30 backdrop-blur-lg">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-3">
-            <button
-              onClick={() => setActiveFilter('all')}
-              className={`px-6 py-2 rounded-full font-medium transition ${
-                activeFilter === 'all'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-              }`}
-            >
-              🔍 All Questions
-            </button>
-            <button
-              onClick={() => setActiveFilter('general')}
-              className={`px-6 py-2 rounded-full font-medium transition ${
-                activeFilter === 'general'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-              }`}
-            >
-              📌 General
-            </button>
-            <button
-              onClick={() => setActiveFilter('security')}
-              className={`px-6 py-2 rounded-full font-medium transition ${
-                activeFilter === 'security'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-              }`}
-            >
-              🛡️ Security
-            </button>
-            <button
-              onClick={() => setActiveFilter('privacy')}
-              className={`px-6 py-2 rounded-full font-medium transition ${
-                activeFilter === 'privacy'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-              }`}
-            >
-              🔒 Privacy
-            </button>
-            <button
-              onClick={() => setActiveFilter('technical')}
-              className={`px-6 py-2 rounded-full font-medium transition ${
-                activeFilter === 'technical'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-              }`}
-            >
-              ⚙️ Technical
-            </button>
+            {filterButtons.map((btn) => (
+              <motion.button
+                key={btn.key}
+                onClick={() => setActiveFilter(btn.key)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`px-6 py-2.5 rounded-full font-medium transition-all ${
+                  activeFilter === btn.key
+                    ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg shadow-blue-500/25'
+                    : 'glass text-gray-700 dark:text-gray-300 hover:bg-white/80 dark:hover:bg-gray-700/50'
+                }`}
+              >
+                {btn.emoji} {btn.label}
+              </motion.button>
+            ))}
           </div>
-            <p className="text-center text-gray-600 mt-4 text-sm">
+          <p className="text-center text-gray-500 dark:text-gray-400 mt-4 text-sm">
             Showing {filteredFaqs.length} of {faqs.length} questions
           </p>
         </div>
       </section>
 
       {/* FAQ List */}
-      <section className="py-12 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="space-y-6">
-            {filteredFaqs.map((faq, index) => (
-              <div key={index} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition">
-                <div className="flex items-start gap-3 mb-3">
-                  <span className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">
-                    {faq.category}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">{faq.question}</h3>
-                <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-              </div>
-            ))}
+          <div className="space-y-4">
+            <AnimatePresence>
+              {filteredFaqs.map((faq, index) => {
+                const colors = categoryColors[faq.category];
+                const isExpanded = expandedIndex === index;
+                
+                return (
+                  <motion.div
+                    key={`${faq.category}-${index}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ delay: index * 0.05 }}
+                    className="glass-card overflow-hidden"
+                  >
+                    <button
+                      onClick={() => setExpandedIndex(isExpanded ? null : index)}
+                      className="w-full p-6 text-left flex items-start gap-4"
+                    >
+                      <div className="flex-1">
+                        <span className={`inline-block px-3 py-1 ${colors.bg} ${colors.darkBg} ${colors.text} ${colors.darkText} text-xs font-semibold rounded-full mb-3`}>
+                          {faq.category}
+                        </span>
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-white">{faq.question}</h3>
+                      </div>
+                      <motion.div
+                        animate={{ rotate: isExpanded ? 180 : 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="flex-shrink-0 mt-1"
+                      >
+                        <ChevronDown className="w-5 h-5 text-gray-400" />
+                      </motion.div>
+                    </button>
+                    
+                    <AnimatePresence>
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 pb-6 pt-0">
+                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{faq.answer}</p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
           </div>
         </div>
       </section>
 
       {/* Still Need Help Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-24 bg-gray-50 dark:bg-gray-800/50 transition-colors duration-300">
         <div className="container mx-auto px-4 max-w-6xl">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">Still Need Help?</h2>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 dark:text-white"
+          >
+            Still Need <span className="gradient-text">Help</span>?
+          </motion.h2>
           
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-lg p-8 text-center border border-gray-200 hover:shadow-lg transition">
-              <Shield className="w-16 h-16 text-blue-600 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-3 text-gray-800">Security Questions</h3>
-              <p className="text-gray-600 mb-4">Have questions about threat detection or security features?</p>
-              <a href="mailto:support@lsafe.io" className="text-blue-600 hover:text-blue-700 font-semibold">
-                Contact Security Team
-              </a>
-            </div>
-
-            <div className="bg-white rounded-lg p-8 text-center border border-gray-200 hover:shadow-lg transition">
-              <Mail className="w-16 h-16 text-green-600 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-3 text-gray-800">General Support</h3>
-              <p className="text-gray-600 mb-4">Need help with using LSafe or have general questions?</p>
-              <a href="mailto:support@lsafe.io" className="text-blue-600 hover:text-blue-700 font-semibold">
-                Get Support
-              </a>
-            </div>
-
-            <div className="bg-white rounded-lg p-8 text-center border border-gray-200 hover:shadow-lg transition">
-              <AlertCircle className="w-16 h-16 text-orange-600 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-3 text-gray-800">Report Issues</h3>
-              <p className="text-gray-600 mb-4">Found a bug or want to report a false positive?</p>
-              <a href="mailto:support@lsafe.io" className="text-blue-600 hover:text-blue-700 font-semibold">
-                Report Issue
-              </a>
-            </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { icon: Shield, color: 'blue', gradient: 'from-blue-500 to-cyan-500', title: 'Security Questions', desc: 'Have questions about threat detection or security features?', link: 'Contact Security Team' },
+              { icon: Mail, color: 'green', gradient: 'from-green-500 to-emerald-500', title: 'General Support', desc: 'Need help with using LSafe or have general questions?', link: 'Get Support' },
+              { icon: AlertCircle, color: 'orange', gradient: 'from-orange-500 to-amber-500', title: 'Report Issues', desc: 'Found a bug or want to report a false positive?', link: 'Report Issue' },
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="glass-card p-10 text-center group"
+              >
+                <div className={`bg-gradient-to-br ${item.gradient} rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
+                  <item.icon className="w-10 h-10 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">{item.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-6">{item.desc}</p>
+                <a href="mailto:support@lsafe.io" className="font-bold gradient-text hover:opacity-80 transition-opacity">
+                  {item.link}
+                </a>
+              </motion.div>
+            ))}
           </div>
 
           {/* Contact Box */}
-          <div className="mt-12 bg-blue-50 rounded-lg p-8 border border-blue-200 text-center">
-            <h3 className="text-2xl font-bold mb-4 text-gray-800">Can't Find What You're Looking For?</h3>
-            <p className="text-gray-700 mb-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-16 glass-card p-10 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200/50 dark:border-blue-500/20 text-center"
+          >
+            <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Can't Find What You're Looking For?</h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
               Our team is here to help. Send us your question and we'll get back to you as soon as possible.
             </p>
-            <div className="bg-white rounded-lg p-6 max-w-2xl mx-auto border border-gray-200">
-              <p className="font-semibold text-gray-800 mb-2">Contact Email: <a href="mailto:support@lsafe.io" className="text-blue-600">support@lsafe.io</a></p>
-              <p className="text-sm text-gray-600 mb-2">For all inquiries: General support, security questions, privacy concerns</p>
-              <p className="text-sm text-gray-500">We typically respond within 24-48 hours</p>
+            <div className="glass p-6 max-w-2xl mx-auto rounded-2xl">
+              <p className="font-bold text-gray-900 dark:text-white mb-3">
+                Contact Email: <a href="mailto:support@lsafe.io" className="gradient-text">support@lsafe.io</a>
+              </p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">For all inquiries: General support, security questions, privacy concerns</p>
+              <p className="text-sm text-gray-500 dark:text-gray-500">We typically respond within 24-48 hours</p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 py-8">
+      <footer className="bg-gray-900 dark:bg-gray-950 text-gray-300 py-12 transition-colors duration-300">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-sm">© 2026 LSafe. All rights reserved. Built with security in mind.</p>
-          <p className="text-sm mt-2 text-gray-500">Built by Tarek Elomami</p>
+          <p className="text-gray-500">© 2026 LSafe. All rights reserved. Built with security in mind.</p>
+          <p className="mt-2 text-gray-600">Built by Tarek Elomami</p>
         </div>
       </footer>
-    </div>
+    </motion.div>
   );
 };
 
