@@ -262,7 +262,7 @@ const blogPosts = [
 
 const Blog: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white transition-colors duration-200">
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-200">
       <PageSEO
         title="Security Blog & Guides - LSafe | Online Security Tips"
         description="Expert guides on online security, phishing prevention, malware protection, and internet safety. Learn how to protect yourself from cyber threats with LSafe."
@@ -287,7 +287,7 @@ const Blog: React.FC = () => {
       </section>
 
       {/* Featured Article */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-2xl p-8 text-white shadow-xl">
             <div className="flex flex-col md:flex-row items-center gap-8">
@@ -316,7 +316,7 @@ const Blog: React.FC = () => {
       {/* Blog Posts Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4 max-w-6xl">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Latest Security Guides</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Latest Security Guides</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post) => {
@@ -331,14 +331,14 @@ const Blog: React.FC = () => {
               };
               
               return (
-                <article key={post.id} className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition group">
+                <article key={post.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden hover:shadow-lg transition group">
                   <div className="p-6">
                     <div className="flex items-center gap-4 mb-4">
                       <div className={`rounded-lg p-3 ${colorClasses[post.color]}`}>
                         <IconComponent className="w-6 h-6" />
                       </div>
                       <div>
-                        <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">{post.category}</span>
+                        <span className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">{post.category}</span>
                         <div className="flex items-center gap-2 text-sm text-gray-400">
                           <Clock className="w-4 h-4" />
                           {post.readTime}
@@ -346,11 +346,11 @@ const Blog: React.FC = () => {
                       </div>
                     </div>
                     
-                    <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition">
+                    <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
                       {post.title}
                     </h3>
                     
-                    <p className="text-gray-600 mb-4 line-clamp-3">
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
                       {post.excerpt}
                     </p>
                     
@@ -369,44 +369,44 @@ const Blog: React.FC = () => {
       </section>
 
       {/* Quick Tips Section */}
-      <section className="py-16 bg-blue-50">
+      <section className="py-16 bg-blue-50 dark:bg-gray-800">
         <div className="container mx-auto px-4 max-w-6xl">
-          <h2 className="text-3xl font-bold text-center mb-4 text-gray-800">Quick Security Tips</h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-4 text-gray-800 dark:text-white">Quick Security Tips</h2>
+          <p className="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
             Simple actions you can take right now to improve your online security
           </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white rounded-lg p-6 text-center shadow-sm">
-              <div className="bg-green-100 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-6 h-6 text-green-600" />
+            <div className="bg-white dark:bg-gray-700 rounded-lg p-6 text-center shadow-sm">
+              <div className="bg-green-100 dark:bg-green-900/30 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-6 h-6 text-green-600 dark:text-green-400" />
               </div>
-              <h3 className="font-semibold text-gray-800 mb-2">Scan Before Click</h3>
-              <p className="text-sm text-gray-600">Always use LSafe to check suspicious links before clicking them.</p>
+              <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Scan Before Click</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Always use LSafe to check suspicious links before clicking them.</p>
             </div>
             
-            <div className="bg-white rounded-lg p-6 text-center shadow-sm">
-              <div className="bg-blue-100 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
-                <Lock className="w-6 h-6 text-blue-600" />
+            <div className="bg-white dark:bg-gray-700 rounded-lg p-6 text-center shadow-sm">
+              <div className="bg-blue-100 dark:bg-blue-900/30 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                <Lock className="w-6 h-6 text-blue-600 dark:text-blue-400" />
               </div>
-              <h3 className="font-semibold text-gray-800 mb-2">Enable 2FA</h3>
-              <p className="text-sm text-gray-600">Add two-factor authentication to all your important accounts.</p>
+              <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Enable 2FA</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Add two-factor authentication to all your important accounts.</p>
             </div>
             
-            <div className="bg-white rounded-lg p-6 text-center shadow-sm">
-              <div className="bg-purple-100 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
-                <Globe className="w-6 h-6 text-purple-600" />
+            <div className="bg-white dark:bg-gray-700 rounded-lg p-6 text-center shadow-sm">
+              <div className="bg-purple-100 dark:bg-purple-900/30 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                <Globe className="w-6 h-6 text-purple-600 dark:text-purple-400" />
               </div>
-              <h3 className="font-semibold text-gray-800 mb-2">Update Software</h3>
-              <p className="text-sm text-gray-600">Keep your devices and apps updated to protect against vulnerabilities.</p>
+              <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Update Software</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Keep your devices and apps updated to protect against vulnerabilities.</p>
             </div>
             
-            <div className="bg-white rounded-lg p-6 text-center shadow-sm">
-              <div className="bg-orange-100 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
-                <Mail className="w-6 h-6 text-orange-600" />
+            <div className="bg-white dark:bg-gray-700 rounded-lg p-6 text-center shadow-sm">
+              <div className="bg-orange-100 dark:bg-orange-900/30 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                <Mail className="w-6 h-6 text-orange-600 dark:text-orange-400" />
               </div>
-              <h3 className="font-semibold text-gray-800 mb-2">Verify Senders</h3>
-              <p className="text-sm text-gray-600">Always verify email sender addresses before clicking any links.</p>
+              <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Verify Senders</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Always verify email sender addresses before clicking any links.</p>
             </div>
           </div>
         </div>
@@ -415,8 +415,8 @@ const Blog: React.FC = () => {
       {/* CTA Section */}
       <section className="py-16">
         <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Stay Protected with LSafe</h2>
-          <p className="text-lg text-gray-600 mb-8">
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Stay Protected with LSafe</h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
             Knowledge is your first defense. Use LSafe's free URL scanner to verify any suspicious links.
           </p>
           <Link 
