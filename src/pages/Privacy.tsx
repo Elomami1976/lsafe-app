@@ -1,7 +1,6 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import PageSEO from '../components/PageSEO';
-import AdSenseControl from '../components/AdSenseControl';
 import { Shield, Database, Lock, Users, Globe, CheckCircle, X } from 'lucide-react';
 
 const LSaveLogo = '/LSave4.png';
@@ -13,7 +12,6 @@ const Privacy: React.FC = () => {
         title="Privacy Policy - LSafe URL Security Scanner"
         description="LSafe privacy policy. Learn how we handle your data with zero logging. We never store your scanned URLs or personal information."
       />
-      <AdSenseControl enabled={true} />
       <Navigation />
       
       {/* Hero Section */}
@@ -88,9 +86,9 @@ const Privacy: React.FC = () => {
               Your scan history is stored locally in your browser only. We cannot access this data, and it never leaves your device unless you explicitly choose to export it.
             </p>
 
-            <h4 className="font-semibold text-gray-800 mb-2">Google Analytics & Google AdSense</h4>
+            <h4 className="font-semibold text-gray-800 mb-2">Google Analytics</h4>
             <p className="text-gray-700">
-              We use Google Analytics to measure site traffic and understand how visitors interact with our pages in aggregate. We also use Google AdSense to display advertisements. Both services may use cookies and collect device-level information (such as browser type, screen size, and general location) under Google's own privacy policies. We do not use this data to personally identify you. See the "Cookies and Tracking" section below for opt-out options.
+              We use Google Analytics to measure site traffic and understand how visitors interact with our pages in aggregate. This service may use cookies and collect device-level information (such as browser type, screen size, and general location) under Google's own privacy policy. We do not use this data to personally identify you. See the "Cookies and Tracking" section below for opt-out options.
             </p>
           </div>
         </section>
@@ -274,7 +272,7 @@ const Privacy: React.FC = () => {
             <div>
               <h4 className="font-semibold text-gray-800 mb-2">Third-Party Cookies</h4>
               <p className="text-gray-700">
-                Our site uses Google Analytics for aggregate site traffic analysis and Google AdSense for displaying advertisements. These Google services may set their own cookies to deliver relevant ads and measure traffic. These cookies are managed by Google and governed by <a href="https://policies.google.com/privacy" className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>. You can manage your Google ad preferences at <a href="https://adssettings.google.com" className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.
+                Our site uses Google Analytics for aggregate site traffic analysis. Google Analytics may set its own cookies to measure traffic and usage trends. These cookies are managed by Google and governed by <a href="https://policies.google.com/privacy" className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>. You can manage or block cookies through your browser settings.
               </p>
             </div>
 

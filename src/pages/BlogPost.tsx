@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import PageSEO from '../components/PageSEO';
-import AdSenseControl from '../components/AdSenseControl';
 import { Shield, AlertTriangle, Lock, Mail, Globe, Smartphone, CreditCard, Users, ArrowLeft, Clock, ChevronRight } from 'lucide-react';
 
 const LSaveLogo = '/LSave4.png';
@@ -683,7 +682,6 @@ const BlogPost: React.FC = () => {
         title={`${post.title} - LSafe Security Blog`}
         description={post.description}
       />
-      <AdSenseControl enabled={true} />
       <Navigation />
       
       {/* Hero */}

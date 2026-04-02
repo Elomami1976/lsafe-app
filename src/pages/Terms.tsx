@@ -1,7 +1,6 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import PageSEO from '../components/PageSEO';
-import AdSenseControl from '../components/AdSenseControl';
 import { FileText, Shield, AlertTriangle, Scale, Lock, Server, Copyright, CheckCircle } from 'lucide-react';
 
 const Terms: React.FC = () => {
@@ -11,7 +10,6 @@ const Terms: React.FC = () => {
         title="Terms of Service - LSafe URL Security Scanner"
         description="LSafe terms of service. Read about the terms and conditions for using our free URL security scanner and link checker."
       />
-      <AdSenseControl enabled={true} />
       <Navigation />
       
       {/* Hero Section */}

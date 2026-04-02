@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import PageSEO from '../components/PageSEO';
-import AdSenseControl from '../components/AdSenseControl';
 import { 
   Shield, AlertTriangle, Lock, Mail, Globe, Smartphone, 
   CreditCard, Users, Eye, Wifi, Download, Key, 
@@ -18,7 +17,6 @@ const SafetyTips: React.FC = () => {
         title="Internet Safety Tips - Stay Safe Online | LSafe"
         description="Essential internet safety tips and best practices. Learn how to protect yourself from online threats, scams, phishing, and cyber attacks with our comprehensive guide."
       />
-      <AdSenseControl enabled={true} />
       <Navigation />
       
       {/* Hero Section */}

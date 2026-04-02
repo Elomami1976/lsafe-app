@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import PageSEO from '../components/PageSEO';
-import AdSenseControl from '../components/AdSenseControl';
 import { pageVariants, staggerContainer, fadeInUp, scaleIn } from '../components/PageTransition';
 import { Shield, Database, Zap, Award, CheckCircle, AlertTriangle, Lock, Search, Mail, Globe, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -33,7 +32,6 @@ const Index: React.FC = () => {
         title="Is This Link Safe? - LSafe URL Security Scanner | Free Link Checker"
         description="Free URL scanner by LSafe. Check if a link is safe, detect phishing, malware, and viruses instantly before you click. Protect yourself from dangerous websites."
       />
-      <AdSenseControl enabled={true} />
       <Navigation />
       
       {/* Hero Section - Modern Mesh Gradient */}

@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import PageSEO from '../components/PageSEO';
-import AdSenseControl from '../components/AdSenseControl';
 import { pageVariants, staggerContainer, fadeInUp } from '../components/PageTransition';
 import { Shield, Users, Globe, CheckCircle, Database, Zap, Lock, TrendingUp, Award } from 'lucide-react';
 
@@ -21,7 +20,6 @@ const About: React.FC = () => {
         title="About LSafe - Our Mission to Make the Web Safer"
         description="Learn about LSafe, the free URL security scanner. Our mission is to protect users from phishing, malware, and online threats with real-time link checking."
       />
-      <AdSenseControl enabled={true} />
       <Navigation />
       
       {/* Hero Section */}

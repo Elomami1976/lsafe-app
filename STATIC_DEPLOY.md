@@ -103,7 +103,6 @@ dist/
 │   └── index-*.js
 ├── robots.txt
 ├── sitemap.xml
-├── ads.txt
 ├── LSave4.png
 ├── .htaccess
 └── other files...

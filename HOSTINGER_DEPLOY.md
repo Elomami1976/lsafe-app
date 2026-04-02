@@ -11,7 +11,7 @@ Your app has been built and is ready for deployment to Hostinger.
 The `dist/` folder now contains your production-ready files:
 - `index.html` - Main HTML file
 - `assets/` - Minified CSS and JavaScript files
-- `robots.txt`, `sitemap.xml`, `ads.txt` - SEO files
+- `robots.txt`, `sitemap.xml` - SEO files
 - `.htaccess` - Apache configuration for routing
 - `_redirects` - Netlify-style redirects (for compatibility)
 

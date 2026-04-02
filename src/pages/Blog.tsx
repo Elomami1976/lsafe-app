@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import PageSEO from '../components/PageSEO';
-import AdSenseControl from '../components/AdSenseControl';
 import { Shield, AlertTriangle, Lock, Mail, Globe, Smartphone, CreditCard, Users, BookOpen, Clock, ChevronRight } from 'lucide-react';
 
 const LSaveLogo = '/LSave4.png';
@@ -267,7 +266,6 @@ const Blog: React.FC = () => {
         title="Security Blog & Guides - LSafe | Online Security Tips"
         description="Expert guides on online security, phishing prevention, malware protection, and internet safety. Learn how to protect yourself from cyber threats with LSafe."
       />
-      <AdSenseControl enabled={true} />
       <Navigation />
       
       {/* Hero Section */}

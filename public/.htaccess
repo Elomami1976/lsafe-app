@@ -1,12 +1,3 @@
-# Force correct MIME type for ads.txt (MUST be before mod_rewrite)
-<Files "ads.txt">
-  ForceType text/plain
-  Header set Cache-Control "no-cache, no-store, must-revalidate"
-  Header set Pragma "no-cache"
-  Header set Expires "0"
-  Header set Access-Control-Allow-Origin "*"
-</Files>
-
 # Ensure proper MIME types
 AddType text/plain .txt
 
@@ -16,7 +7,6 @@ AddType text/plain .txt
   
   # CRITICAL: Serve static files directly BEFORE any redirects
   # These files must be served without redirect chains
-  RewriteRule ^ads\.txt$ - [L,T=text/plain]
   RewriteRule ^robots\.txt$ - [L,T=text/plain]
   RewriteRule ^sitemap\.xml$ - [L,T=application/xml]
   RewriteRule ^google[a-z0-9]+\.html$ - [L]

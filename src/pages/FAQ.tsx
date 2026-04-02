@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import PageSEO from '../components/PageSEO';
-import AdSenseControl from '../components/AdSenseControl';
 import { pageVariants, staggerContainer, fadeInUp } from '../components/PageTransition';
 import { Shield, Mail, AlertCircle, ChevronDown } from 'lucide-react';
 
@@ -121,7 +120,6 @@ const FAQ: React.FC = () => {
         title="FAQ - Frequently Asked Questions | LSafe URL Scanner"
         description="Find answers to common questions about LSafe URL scanner. Learn how our link checker works, what threats we detect, and how to stay safe online."
       />
-      <AdSenseControl enabled={true} />
       <Navigation />
       
       {/* Hero Section */}

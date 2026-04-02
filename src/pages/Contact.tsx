@@ -1,7 +1,6 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import PageSEO from '../components/PageSEO';
-import AdSenseControl from '../components/AdSenseControl';
 import { Mail, MessageSquare, CheckCircle, Clock, Shield, AlertTriangle, Globe } from 'lucide-react';
 
 const LSaveLogo = '/LSave4.png';
@@ -14,7 +13,6 @@ const Contact: React.FC = () => {
         title="Contact Us - LSafe URL Security Scanner"
         description="Get in touch with the LSafe team. Contact us for support, feedback, or questions about our free URL security scanner."
       />
-      <AdSenseControl enabled={true} />
       <Navigation />
       
       {/* Hero Section */}

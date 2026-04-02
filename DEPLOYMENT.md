@@ -24,7 +24,6 @@ After building, you'll have a `dist` folder containing:
 - robots.txt
 - sitemap.xml
 - sw.js (service worker)
-- ads.txt
 - .htaccess
 - LSave4.png (logo)
 
@@ -69,18 +68,11 @@ Visit your website and check:
 - ✅ URL scanner functionality works
 - ✅ Logo and images display properly
 - ✅ HTTPS is enabled (green padlock in browser)
-- ✅ ads.txt is accessible at: https://yourdomain.com/ads.txt
 
 ## Important Files for Hostinger
 
 ### .htaccess (Already included)
 This file ensures proper routing for React single-page application. It redirects all requests to index.html.
-
-### ads.txt (Already configured)
-Located at root with your Google AdSense Publisher ID:
-```
-google.com, pub-4709657806016589, DIRECT, f08c47fec0942fa0
-```
 
 ## Troubleshooting
 
@@ -107,18 +99,9 @@ google.com, pub-4709657806016589, DIRECT, f08c47fec0942fa0
 - [ ] Configure domain (if applicable)
 - [ ] Enable SSL certificate
 - [ ] Test all pages and functionality
-- [ ] Verify ads.txt is accessible
 - [ ] Submit sitemap to Google Search Console
 - [ ] Test on mobile devices
 - [ ] Check page load speed
-
-## Google AdSense Setup
-
-Once deployed:
-1. Go to Google AdSense dashboard
-2. Add your site for verification
-3. Place ad code where needed (currently no ads in the app)
-4. Verify ads.txt is readable at https://yourdomain.com/ads.txt
 
 ## Performance Optimization (Already Configured)
 

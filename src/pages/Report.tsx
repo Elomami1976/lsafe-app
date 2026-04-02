@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import PageSEO from '../components/PageSEO';
-import AdSenseControl from '../components/AdSenseControl';
 import {
   VerdictSection,
   ChecksSection,
@@ -111,7 +110,6 @@ const Report: React.FC = () => {
         title="URL Security Report - LSafe Scanner"
         description="View detailed URL security reports from LSafe. Get comprehensive threat analysis, SSL checks, and safety scores for any link."
       />
-      <AdSenseControl enabled={false} />
       <Navigation />
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         <div className="text-center mb-8">
@@ -180,7 +178,6 @@ const Report: React.FC = () => {
 
   if (loading) return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <AdSenseControl enabled={false} />
       <Navigation />
       <div className="container mx-auto px-4 py-8 mt-20">
         <div className="max-w-3xl mx-auto">
@@ -233,7 +230,6 @@ const Report: React.FC = () => {
 
   if (error) return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <AdSenseControl enabled={false} />
       <Navigation />
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="max-w-md mx-auto bg-white p-8 rounded-xl shadow-lg border-l-4 border-red-500 mb-8">
@@ -295,7 +291,6 @@ const Report: React.FC = () => {
   );
   if (!report) return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <AdSenseControl enabled={false} />
       <Navigation />
       <div className="container mx-auto px-4 py-12 max-w-4xl text-center">
         <Shield className="mx-auto h-16 w-16 text-blue-600 mb-4 animate-pulse" />
@@ -343,7 +338,6 @@ const Report: React.FC = () => {
         title="URL Security Report - LSafe Scanner"
         description="View detailed URL security reports from LSafe. Get comprehensive threat analysis, SSL checks, and safety scores for any link."
       />
-      <AdSenseControl enabled={true} />
       <Navigation />
       
       <div className="flex-grow container mx-auto px-4 py-8">
