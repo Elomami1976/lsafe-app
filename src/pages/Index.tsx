@@ -384,67 +384,6 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      {/* Scanner Section - Modern Card */}
-      <section className="py-24 bg-gray-50 dark:bg-gray-800/50 transition-colors duration-300">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="glass-card p-10 border border-gray-200/50 dark:border-gray-700/50"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white">
-              Is This Link Safe? <span className="gradient-text">Find Out Now!</span>
-            </h2>
-            <p className="text-center text-gray-600 dark:text-gray-400 mb-8">
-              Paste any suspicious link below to instantly check if it's safe or dangerous
-            </p>
-            
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Is this link safe? Paste URL here to find out: https://example.com"
-                className="w-full px-6 py-5 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-500/10 text-gray-800 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-all text-lg"
-                value={inputUrl}
-                onChange={(e) => setInputUrl(e.target.value)}
-              />
-              <button className="absolute right-3 top-3 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg text-sm hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 transition-all"
-                onClick={() => {
-                  navigator.clipboard.readText().then(text => setInputUrl(text));
-                }}
-              >
-                📋
-              </button>
-            </div>
-            
-            <motion.button
-              onClick={handleScan}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="mt-6 w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-5 rounded-xl transition-all text-lg flex items-center justify-center gap-3 shadow-lg shadow-green-500/25"
-            >
-              <Shield className="w-6 h-6" />
-              Check If This Link Is Safe
-            </motion.button>
-
-            <div className="flex flex-wrap justify-center gap-6 mt-8 text-sm text-gray-600 dark:text-gray-400">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-500" />
-                <span>No registration required</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Lock className="w-5 h-5 text-blue-500" />
-                <span>URLs not stored</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Zap className="w-5 h-5 text-orange-500" />
-                <span>Instant results</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* How We Calculate Risk Scores - Modern Info Cards */}
       <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="container mx-auto px-4 max-w-6xl">
