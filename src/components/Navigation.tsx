@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Menu, X, Moon, Sun } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import { Menu, X, Moon, Sun, ChevronDown, Fingerprint, Cookie, Mail, Shield } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 
@@ -15,17 +15,35 @@ const navItems = [
   { to: '/contact', label: 'Contact' },
 ];
 
+const toolItems = [
+  { to: '/browser-fingerprint', label: 'Browser Fingerprint', icon: Fingerprint, desc: 'See your digital tracking identity', color: 'text-violet-500' },
+  { to: '/cookie-analyzer', label: 'Cookie & Tracker Analyzer', icon: Cookie, desc: 'Detect hidden trackers on any site', color: 'text-orange-500' },
+  { to: '/email-header-analyzer', label: 'Email Header Analyzer', icon: Mail, desc: 'Detect phishing & verify authentication', color: 'text-cyan-500' },
+];
+
 const Navigation: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
+  const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const toolsRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close tools dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (toolsRef.current && !toolsRef.current.contains(e.target as Node)) {
+        setToolsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   return (
@@ -99,6 +117,55 @@ const Navigation: React.FC = () => {
                 </NavLink>
               </li>
             ))}
+
+            {/* Tools Dropdown */}
+            <li ref={toolsRef} className="relative">
+              <button
+                onClick={() => setToolsOpen(v => !v)}
+                className={`flex items-center gap-1 relative px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+                  scrolled
+                    ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                    : 'text-white/80 hover:text-white'
+                }`}
+              >
+                <Shield className="w-3.5 h-3.5" />
+                <span>Tools</span>
+                <span className="ml-0.5 text-[10px] font-bold bg-gradient-to-r from-violet-500 to-cyan-500 text-white px-1.5 py-0.5 rounded-full">NEW</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${toolsOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              <AnimatePresence>
+                {toolsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full right-0 mt-2 w-72 glass rounded-2xl shadow-xl border border-white/20 dark:border-gray-700 overflow-hidden z-50"
+                  >
+                    <div className="p-2">
+                      <p className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest px-3 py-2">Privacy & Security Tools</p>
+                      {toolItems.map(tool => (
+                        <Link
+                          key={tool.to}
+                          to={tool.to}
+                          onClick={() => setToolsOpen(false)}
+                          className="flex items-start gap-3 px-3 py-3 rounded-xl hover:bg-gray-100/80 dark:hover:bg-gray-700/80 transition-colors group"
+                        >
+                          <div className={`mt-0.5 ${tool.color}`}>
+                            <tool.icon className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <div className="font-semibold text-sm text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{tool.label}</div>
+                            <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{tool.desc}</div>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </li>
           </ul>
 
           {/* Theme Toggle */}
@@ -211,6 +278,48 @@ const Navigation: React.FC = () => {
                     </NavLink>
                   </motion.li>
                 ))}
+
+                {/* Mobile Tools section */}
+                <motion.li
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navItems.length * 0.05 }}
+                >
+                  <button
+                    onClick={() => setMobileToolsOpen(v => !v)}
+                    className="w-full flex items-center justify-between px-5 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-800/50 transition-all"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Shield className="w-4 h-4 text-violet-500" />
+                      Tools
+                      <span className="text-[10px] font-bold bg-gradient-to-r from-violet-500 to-cyan-500 text-white px-1.5 py-0.5 rounded-full">NEW</span>
+                    </span>
+                    <ChevronDown className={`w-4 h-4 transition-transform ${mobileToolsOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {mobileToolsOpen && (
+                      <motion.ul
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden bg-gray-50 dark:bg-slate-800/50"
+                      >
+                        {toolItems.map(tool => (
+                          <li key={tool.to}>
+                            <Link
+                              to={tool.to}
+                              onClick={() => { setMobileMenuOpen(false); setMobileToolsOpen(false); }}
+                              className="flex items-center gap-3 px-7 py-3 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                            >
+                              <tool.icon className={`w-4 h-4 ${tool.color}`} />
+                              {tool.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </motion.li>
               </ul>
             </div>
           </motion.div>

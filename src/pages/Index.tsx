@@ -1,16 +1,27 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import PageSEO from '../components/PageSEO';
 import { pageVariants, staggerContainer, fadeInUp, scaleIn } from '../components/PageTransition';
-import { Shield, Database, Zap, Award, CheckCircle, AlertTriangle, Lock, Search, Mail, Globe, Sparkles } from 'lucide-react';
+import { Shield, Database, Zap, Award, CheckCircle, AlertTriangle, Lock, Search, Mail, Globe, Sparkles, Fingerprint, Cookie, X, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const LSaveLogo = '/LSave4.png';
 
+const NEW_TOOLS_DISMISSED_KEY = 'lsafe_new_tools_dismissed_v1';
+
 const Index: React.FC = () => {
   const [inputUrl, setInputUrl] = useState('');
   const navigate = useNavigate();
+  const [bannerVisible, setBannerVisible] = useState(
+    () => !localStorage.getItem(NEW_TOOLS_DISMISSED_KEY)
+  );
+
+  const dismissBanner = () => {
+    localStorage.setItem(NEW_TOOLS_DISMISSED_KEY, '1');
+    setBannerVisible(false);
+  };
 
   const handleScan = async () => {
     if (!inputUrl.trim()) {
@@ -33,7 +44,54 @@ const Index: React.FC = () => {
         description="Free URL scanner by LSafe. Check if a link is safe, detect phishing, malware, and viruses instantly before you click. Protect yourself from dangerous websites."
       />
       <Navigation />
-      
+
+      {/* ── New Tools Announcement Banner ── */}
+      <AnimatePresence>
+        {bannerVisible && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-0 left-0 right-0 z-40 overflow-hidden"
+            style={{ marginTop: '64px' }}
+          >
+            <div className="bg-gradient-to-r from-violet-600 via-purple-600 to-cyan-600 text-white">
+              <div className="container mx-auto px-4 py-2.5 flex items-center justify-between gap-4">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="flex items-center gap-1.5 bg-white/20 px-2.5 py-1 rounded-full text-xs font-bold shrink-0">
+                    <Sparkles className="w-3.5 h-3.5 text-yellow-300" /> NEW
+                  </span>
+                  <span className="text-sm font-medium">3 new privacy tools just launched:</span>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      { to: '/browser-fingerprint', icon: Fingerprint, label: 'Browser Fingerprint' },
+                      { to: '/cookie-analyzer', icon: Cookie, label: 'Cookie Analyzer' },
+                      { to: '/email-header-analyzer', icon: Mail, label: 'Email Header Analyzer' },
+                    ].map(tool => (
+                      <Link
+                        key={tool.to}
+                        to={tool.to}
+                        className="flex items-center gap-1 bg-white/20 hover:bg-white/30 px-2.5 py-1 rounded-full text-xs font-semibold transition-colors"
+                      >
+                        <tool.icon className="w-3 h-3" /> {tool.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                <button
+                  onClick={dismissBanner}
+                  className="shrink-0 p-1.5 rounded-full hover:bg-white/20 transition-colors"
+                  aria-label="Dismiss"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Hero Section - Modern Mesh Gradient */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         {/* Animated mesh gradient background */}
@@ -188,6 +246,99 @@ const Index: React.FC = () => {
           <span className="text-green-600 dark:text-green-300">We analyze URLs without storing them. GDPR & CCPA compliant.</span>
         </div>
       </motion.div>
+
+      {/* ── Privacy & Security Tools Section ── */}
+      <section className="py-24 bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 dark:from-slate-950 dark:via-purple-950 dark:to-slate-950 transition-colors duration-300">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full text-white/90 text-sm font-medium mb-6">
+              <Sparkles className="w-4 h-4 text-yellow-300" />
+              New Tools — Just Launched
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+              Privacy & Security <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-cyan-400 to-emerald-400">Toolkit</span>
+            </h2>
+            <p className="text-white/60 max-w-2xl mx-auto">
+              Free, browser-based tools that protect your privacy. No accounts, no data collection — everything runs locally on your device.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                to: '/browser-fingerprint',
+                icon: Fingerprint,
+                title: 'Browser Fingerprint Test',
+                desc: 'Discover what unique data websites silently collect about you — canvas fingerprint, WebGL, timezone, screen info and more. See your trackability score.',
+                gradient: 'from-violet-500 to-purple-600',
+                glow: 'shadow-violet-500/20',
+                tags: ['Privacy', 'Tracking', 'Digital Identity'],
+                badge: 'NEW',
+              },
+              {
+                to: '/cookie-analyzer',
+                icon: Cookie,
+                title: 'Cookie & Tracker Analyzer',
+                desc: 'Paste any website\'s source and instantly detect Google Analytics, Facebook Pixel, session recorders, ad networks, and 24 other known trackers.',
+                gradient: 'from-orange-500 to-amber-500',
+                glow: 'shadow-orange-500/20',
+                tags: ['GDPR', 'Trackers', 'Cookies'],
+                badge: 'NEW',
+              },
+              {
+                to: '/email-header-analyzer',
+                icon: Mail,
+                title: 'Email Header Analyzer',
+                desc: 'Detect phishing and email spoofing by verifying SPF, DKIM, and DMARC authentication. Trace the full routing path and identify the origin IP.',
+                gradient: 'from-cyan-500 to-blue-600',
+                glow: 'shadow-cyan-500/20',
+                tags: ['Anti-Phishing', 'SPF/DKIM', 'Email Security'],
+                badge: 'NEW',
+              },
+            ].map((tool, index) => (
+              <motion.div
+                key={tool.to}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -6 }}
+              >
+                <Link
+                  to={tool.to}
+                  className={`group block h-full bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 hover:border-white/20 rounded-2xl p-7 transition-all duration-300 shadow-2xl hover:${tool.glow}`}
+                >
+                  <div className="flex items-start justify-between mb-5">
+                    <div className={`bg-gradient-to-br ${tool.gradient} rounded-2xl w-14 h-14 flex items-center justify-center shadow-lg`}>
+                      <tool.icon className="w-7 h-7 text-white" />
+                    </div>
+                    <span className="text-xs font-bold bg-gradient-to-r from-violet-400 to-cyan-400 text-transparent bg-clip-text border border-violet-400/30 px-2.5 py-1 rounded-full">
+                      {tool.badge}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-violet-400 group-hover:to-cyan-400 transition-all">
+                    {tool.title}
+                  </h3>
+                  <p className="text-white/50 text-sm leading-relaxed mb-5">{tool.desc}</p>
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    {tool.tags.map(tag => (
+                      <span key={tag} className="text-xs text-white/40 border border-white/10 px-2 py-0.5 rounded-full">{tag}</span>
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-2 text-sm font-semibold text-white/60 group-hover:text-white transition-colors">
+                    Try the tool free <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* How LSafe Protects You - Bento Grid */}
       <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
