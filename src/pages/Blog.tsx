@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import PageSEO from '../components/PageSEO';
-import { Shield, AlertTriangle, Lock, Mail, Globe, Smartphone, CreditCard, Users, BookOpen, Clock, ChevronRight } from 'lucide-react';
+import { Shield, AlertTriangle, Lock, Mail, Globe, Smartphone, CreditCard, Users, BookOpen, Clock, ChevronRight, Fingerprint, Cookie } from 'lucide-react';
 
 const LSaveLogo = '/LSave4.png';
 
@@ -255,6 +255,129 @@ const blogPosts = [
       - Enable 2FA if not already active
       - Monitor the account for suspicious activity
       - Consider a password manager going forward
+    `
+  },
+  {
+    id: 'browser-fingerprint',
+    title: 'What Is Browser Fingerprinting and How Are You Being Tracked?',
+    excerpt: 'Websites can identify you without cookies using your browser\'s unique combination of settings, fonts, and hardware. Find out what data is exposed and how to reduce your digital footprint.',
+    icon: Fingerprint,
+    color: 'purple',
+    readTime: '7 min read',
+    category: 'Privacy',
+    content: `
+      Browser fingerprinting is a powerful tracking technique that identifies you based on the unique combination of your browser's configuration — without storing any data on your device.
+
+      **What Data Is Collected:**
+
+      **Canvas Fingerprint** - Your GPU renders a hidden image slightly differently than every other device. Websites read these pixel differences to create a near-unique identifier.
+
+      **WebGL Fingerprint** - Similar to canvas, but uses 3D rendering hardware properties that are stable across browser sessions.
+
+      **System Fonts** - The set of fonts installed on your device is surprisingly unique and rarely changes.
+
+      **Screen Resolution & Color Depth** - Combined with your timezone and language settings, these narrow down your identity further.
+
+      **Browser Plugins & Extensions** - The list of installed extensions and their versions contributes to your fingerprint.
+
+      **Hardware Concurrency** - The number of CPU cores your machine reports helps identify device class and model.
+
+      **Why It's Hard to Block:**
+      Unlike cookies, fingerprinting doesn't store anything on your device. Blocking cookies or using private browsing mode does nothing to prevent it. Even VPNs only mask your IP — they don't change your browser fingerprint.
+
+      **How to Reduce Your Fingerprint:**
+      1. Use the Tor Browser, which normalizes fingerprint data across all users
+      2. Enable "Resist Fingerprinting" in Firefox (privacy.resistFingerprinting)
+      3. Use browser extensions like CanvasBlocker
+      4. Minimize the number of installed fonts and extensions
+      5. Use our free **Browser Fingerprint Test** tool to see exactly what you're exposing
+
+      **Check Your Own Fingerprint:**
+      Try LSafe's Browser Fingerprint Test at /browser-fingerprint. It shows your canvas hash, WebGL renderer, screen info, timezone, language, and calculates a uniqueness score — all browser-side with zero data sent to any server.
+    `
+  },
+  {
+    id: 'cookie-tracker-analyzer',
+    title: 'Cookies & Trackers: How Websites Follow You Across the Internet',
+    excerpt: 'From Google Analytics to Facebook Pixel and session recorders, websites embed dozens of trackers. Learn what they do, what data they collect, and how to detect them on any site.',
+    icon: Cookie,
+    color: 'orange',
+    readTime: '8 min read',
+    category: 'Privacy',
+    content: `
+      Most websites you visit today contain multiple third-party tracking scripts that silently report your behavior back to advertising networks, analytics platforms, and data brokers.
+
+      **Types of Trackers:**
+
+      **Analytics Trackers** (e.g. Google Analytics, Hotjar, Mixpanel) - Record page views, session duration, and navigation paths to help site owners understand user behavior.
+
+      **Advertising Trackers** (e.g. Facebook Pixel, Google Ads, DoubleClick) - Build a profile of your interests to serve targeted ads across the web.
+
+      **Session Recorders** (e.g. FullStory, Clarity, LogRocket) - Literally record your mouse movements, clicks, and keystrokes to replay your session. Can capture form inputs.
+
+      **A/B Testing Tools** (e.g. Optimizely, VWO) - Test different site versions on different users. Often linked to advertising profiles.
+
+      **CDN & Infrastructure** (e.g. Cloudflare, jsDelivr) - Usually privacy-neutral but can still log IPs and request metadata.
+
+      **What GDPR & CCPA Say:**
+      Under GDPR (EU) and CCPA (California), websites must disclose all trackers, obtain informed consent before non-essential cookies are set, and allow users to opt out. Many sites bury this in consent banners.
+
+      **How to Detect Trackers:**
+      1. Use our free **Cookie & Tracker Analyzer** at /cookie-analyzer — paste any page's HTML source to instantly identify trackers
+      2. Install browser extensions like uBlock Origin or Privacy Badger
+      3. Open DevTools → Network tab and filter by third-party requests
+      4. Check a site's Privacy Policy for disclosed third parties
+
+      **Practical Steps to Reduce Tracking:**
+      - Enable "Enhanced Tracking Protection" in Firefox
+      - Use Safari's Intelligent Tracking Prevention
+      - Block third-party cookies in your browser settings
+      - Use a DNS-level blocker like NextDNS or Pi-hole
+      - Regularly clear cookies and site data
+
+      Our Cookie Analyzer checks for 24+ known trackers and flags high-risk ones with clear explanations.
+    `
+  },
+  {
+    id: 'email-header-analyzer',
+    title: 'How to Read Email Headers to Detect Phishing and Spoofing',
+    excerpt: 'Every email contains hidden routing data in its headers — timestamps, server hops, and authentication results. Learn how to read them and spot fake sender addresses before it\'s too late.',
+    icon: Mail,
+    color: 'blue',
+    readTime: '9 min read',
+    category: 'Threat Prevention',
+    content: `
+      Email headers are the hidden metadata in every message you receive. They contain the full routing path, sender authentication results, and timestamps that can reveal whether an email is genuine or a spoofed phishing attempt.
+
+      **What Are Email Headers?**
+      When you receive an email, your mail client shows you the "From" and "Subject" lines. But underneath, there are dozens of header lines that reveal the true path the message traveled — from the sender's mail server all the way to your inbox.
+
+      **Key Headers to Understand:**
+
+      **Received** - Each mail server that handled the message adds a "Received" header. Reading them from bottom to top gives you the true path. Unexpected hops or geographic detours can indicate suspicious routing.
+
+      **From vs. Return-Path** - Phishers often set a legitimate-looking "From" display name while the actual Return-Path (where bounces go) reveals the real sender.
+
+      **SPF (Sender Policy Framework)** - A DNS record that specifies which mail servers are authorized to send email for a domain. A "fail" or "softfail" result means the sending server isn't authorized — a major red flag.
+
+      **DKIM (DomainKeys Identified Mail)** - A cryptographic signature that proves the email wasn't tampered with in transit. A DKIM "fail" means the message was altered or forged.
+
+      **DMARC (Domain-based Message Authentication)** - Combines SPF and DKIM and tells receiving servers what to do with failures (reject, quarantine, or report). A missing DMARC record leaves a domain open to spoofing.
+
+      **Real Phishing Example:**
+      A "PayPal" email might show From: service@paypal.com in your mail client, but the raw headers reveal:
+      - Return-Path: bounce@random-domain.ru
+      - SPF: fail (not authorized)
+      - DKIM: none
+      - First Received hop originates from an Eastern European IP
+
+      **How to Get Email Headers:**
+      - Gmail: Open email → three dots → "Show original"
+      - Outlook: File → Properties → Internet headers
+      - Apple Mail: View → Message → All Headers
+
+      **Use Our Email Header Analyzer:**
+      Paste raw headers into LSafe's free Email Header Analyzer at /email-header-analyzer. It parses SPF, DKIM, and DMARC results, visualizes the routing hops with timestamps, identifies the origin IP, and gives you an overall risk score — all instantly, with no data sent to any server.
     `
   }
 ];

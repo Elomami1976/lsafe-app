@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import PageSEO from '../components/PageSEO';
-import { Shield, AlertTriangle, Lock, Mail, Globe, Smartphone, CreditCard, Users, ArrowLeft, Clock, ChevronRight } from 'lucide-react';
+import { Shield, AlertTriangle, Lock, Mail, Globe, Smartphone, CreditCard, Users, ArrowLeft, Clock, ChevronRight, Fingerprint, Cookie } from 'lucide-react';
 
 const LSaveLogo = '/LSave4.png';
 
@@ -653,16 +653,302 @@ const blogPosts: Record<string, {
         </div>
       </>
     )
+  },
+  'browser-fingerprint': {
+    title: 'What Is Browser Fingerprinting and How Are You Being Tracked?',
+    description: 'Websites can identify you without cookies using your browser\'s unique combination of settings, fonts, and hardware. Find out what data is exposed and how to reduce your digital footprint.',
+    icon: Fingerprint,
+    color: 'purple',
+    readTime: '7 min read',
+    category: 'Privacy',
+    content: (
+      <>
+        <p className="text-lg text-gray-700 mb-6">
+          Browser fingerprinting is a powerful tracking technique that identifies you based on the unique combination of your browser's configuration — without storing any data on your device. No cookies, no login required. Just the silent collection of dozens of browser attributes to build an identifier that is statistically unique to you.
+        </p>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">What Data Is Collected</h2>
+
+        <div className="space-y-4 mb-8">
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-gray-800 mb-2">🎨 Canvas Fingerprint</h3>
+            <p className="text-gray-600">Your GPU renders a hidden image slightly differently than every other device. Websites read these pixel-level differences to create a near-unique identifier that doesn't change across sessions.</p>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-gray-800 mb-2">📐 WebGL Fingerprint</h3>
+            <p className="text-gray-600">Similar to canvas, but uses 3D rendering hardware properties. The GPU vendor, renderer string, and supported extensions are all unique to your hardware combination.</p>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-gray-800 mb-2">🔤 System Fonts</h3>
+            <p className="text-gray-600">The specific set of fonts installed on your OS is surprisingly unique. A combination of pre-installed fonts from your OS version and any fonts you've added yourself creates a distinctive list.</p>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-gray-800 mb-2">🖥️ Screen & Hardware Info</h3>
+            <p className="text-gray-600">Screen resolution, color depth, pixel ratio, timezone, language, and CPU core count all narrow down your identity. Combined, they significantly reduce the anonymity set.</p>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-gray-800 mb-2">🔌 Browser Extensions</h3>
+            <p className="text-gray-600">The list of installed extensions and their versions is detectable via timing attacks and DOM probing, adding another dimension to the fingerprint.</p>
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Why It's Hard to Block</h2>
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
+          <p className="text-yellow-800 mb-3">Unlike cookies, fingerprinting doesn't store anything on your device. This means:</p>
+          <ul className="space-y-2 text-yellow-700">
+            <li>• <strong>Private/incognito mode doesn't help</strong> — your hardware is the same</li>
+            <li>• <strong>Clearing cookies doesn't help</strong> — no data is stored locally</li>
+            <li>• <strong>VPNs don't help</strong> — they only mask your IP, not your browser attributes</li>
+            <li>• <strong>Tracking persists across sites</strong> — ad networks pool fingerprints across domains</li>
+          </ul>
+        </div>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">How to Reduce Your Fingerprint</h2>
+        <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
+          <ol className="space-y-3">
+            <li className="flex items-start gap-3 text-gray-700">
+              <span className="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+              <span>Use the <strong>Tor Browser</strong> — it normalizes fingerprint data so all users look identical</span>
+            </li>
+            <li className="flex items-start gap-3 text-gray-700">
+              <span className="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+              <span>Enable <strong>privacy.resistFingerprinting</strong> in Firefox's about:config</span>
+            </li>
+            <li className="flex items-start gap-3 text-gray-700">
+              <span className="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+              <span>Use the <strong>CanvasBlocker</strong> browser extension to randomize canvas output</span>
+            </li>
+            <li className="flex items-start gap-3 text-gray-700">
+              <span className="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span>
+              <span>Minimize installed fonts and extensions to reduce uniqueness</span>
+            </li>
+            <li className="flex items-start gap-3 text-gray-700">
+              <span className="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">5</span>
+              <span>Use <strong>LSafe's Browser Fingerprint Test</strong> to see exactly what you're exposing right now</span>
+            </li>
+          </ol>
+        </div>
+
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+          <h3 className="text-lg font-bold text-blue-800 mb-3">🔍 Test Your Own Fingerprint</h3>
+          <p className="text-blue-700">
+            Use our free <strong>Browser Fingerprint Test</strong> tool to instantly see your canvas hash, WebGL renderer, screen info, timezone, language, and get a uniqueness score. Everything runs locally in your browser — no data is sent to any server.
+          </p>
+        </div>
+      </>
+    )
+  },
+  'cookie-tracker-analyzer': {
+    title: 'Cookies & Trackers: How Websites Follow You Across the Internet',
+    description: 'From Google Analytics to Facebook Pixel and session recorders, websites embed dozens of trackers. Learn what they do, what data they collect, and how to detect them on any site.',
+    icon: Cookie,
+    color: 'orange',
+    readTime: '8 min read',
+    category: 'Privacy',
+    content: (
+      <>
+        <p className="text-lg text-gray-700 mb-6">
+          Most websites you visit today contain multiple third-party tracking scripts that silently report your behavior back to advertising networks, analytics platforms, and data brokers — often without your knowledge or meaningful consent.
+        </p>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Types of Trackers</h2>
+
+        <div className="space-y-4 mb-8">
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-gray-800 mb-2">📊 Analytics Trackers</h3>
+            <p className="text-gray-600"><strong>Examples:</strong> Google Analytics, Hotjar, Mixpanel, Plausible</p>
+            <p className="text-gray-600 mt-1">Record page views, session duration, bounce rate, and navigation paths. Help site owners understand usage patterns. Generally lower privacy risk but still send data to third parties.</p>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-gray-800 mb-2">🎯 Advertising Trackers</h3>
+            <p className="text-gray-600"><strong>Examples:</strong> Facebook Pixel, Google Ads, DoubleClick, Criteo</p>
+            <p className="text-gray-600 mt-1">Build a detailed profile of your interests and behaviors to serve targeted ads across the web. Data is shared between ad networks to create a cross-site identity.</p>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-gray-800 mb-2">🎥 Session Recorders</h3>
+            <p className="text-gray-600"><strong>Examples:</strong> FullStory, Microsoft Clarity, LogRocket, Mouseflow</p>
+            <p className="text-gray-600 mt-1">Literally record your mouse movements, scrolling, clicks, and keystrokes to replay your session. Can capture form inputs — including sensitive data typed before submission.</p>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-gray-800 mb-2">🧪 A/B Testing Tools</h3>
+            <p className="text-gray-600"><strong>Examples:</strong> Optimizely, VWO, Google Optimize</p>
+            <p className="text-gray-600 mt-1">Test different site versions on different users to optimize conversion rates. Often linked to advertising profiles, allowing behavioral segmentation.</p>
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">What GDPR & CCPA Require</h2>
+        <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mb-8">
+          <p className="text-purple-800 mb-3">Under privacy regulations, websites must:</p>
+          <ul className="space-y-2 text-purple-700">
+            <li>• <strong>Disclose all trackers</strong> in their Privacy Policy</li>
+            <li>• <strong>Obtain informed consent</strong> before setting non-essential cookies (GDPR)</li>
+            <li>• <strong>Allow opt-out</strong> of data sale and tracking (CCPA)</li>
+            <li>• <strong>Honor Do Not Track</strong> signals where applicable</li>
+            <li>• <strong>Provide data deletion</strong> requests for EU/California residents</li>
+          </ul>
+          <p className="text-purple-700 mt-3">Many sites bury consent in dark patterns or pre-ticked boxes that technically violate these rules.</p>
+        </div>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">How to Detect Trackers on Any Site</h2>
+        <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
+          <ol className="space-y-3">
+            <li className="flex items-start gap-3 text-gray-700">
+              <span className="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+              <span>Use <strong>LSafe's Cookie & Tracker Analyzer</strong> — paste any page's HTML source to instantly identify 24+ known trackers with risk ratings</span>
+            </li>
+            <li className="flex items-start gap-3 text-gray-700">
+              <span className="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+              <span>Install <strong>uBlock Origin</strong> or <strong>Privacy Badger</strong> browser extensions</span>
+            </li>
+            <li className="flex items-start gap-3 text-gray-700">
+              <span className="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+              <span>Open <strong>DevTools → Network tab</strong> and filter by third-party domains</span>
+            </li>
+            <li className="flex items-start gap-3 text-gray-700">
+              <span className="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span>
+              <span>Check the site's <strong>Privacy Policy</strong> for listed third parties and data processors</span>
+            </li>
+          </ol>
+        </div>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Practical Steps to Reduce Tracking</h2>
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+          <ul className="space-y-2 text-blue-800">
+            <li>• Enable <strong>Enhanced Tracking Protection</strong> in Firefox (Strict mode)</li>
+            <li>• Use <strong>Safari</strong> with Intelligent Tracking Prevention enabled</li>
+            <li>• Block third-party cookies in your browser settings</li>
+            <li>• Use a <strong>DNS-level blocker</strong> like NextDNS or Pi-hole</li>
+            <li>• Regularly clear cookies and site data in your browser</li>
+            <li>• Use <strong>Brave Browser</strong> which blocks trackers by default</li>
+          </ul>
+        </div>
+
+        <div className="bg-orange-50 border border-orange-200 rounded-lg p-6 mb-8">
+          <h3 className="text-lg font-bold text-orange-800 mb-3">🍪 Analyze Any Website's Trackers</h3>
+          <p className="text-orange-700">
+            Try LSafe's free <strong>Cookie & Tracker Analyzer</strong>. Right-click any page → View Page Source → copy the HTML and paste it into our tool. We'll instantly flag every tracker we find with explanations of what data they collect and their risk level.
+          </p>
+        </div>
+      </>
+    )
+  },
+  'email-header-analyzer': {
+    title: 'How to Read Email Headers to Detect Phishing and Spoofing',
+    description: 'Every email contains hidden routing data in its headers — timestamps, server hops, and authentication results. Learn how to read them and spot fake sender addresses before it\'s too late.',
+    icon: Mail,
+    color: 'blue',
+    readTime: '9 min read',
+    category: 'Threat Prevention',
+    content: (
+      <>
+        <p className="text-lg text-gray-700 mb-6">
+          Email headers are the hidden metadata in every message you receive. They contain the full routing path from sender to inbox, authentication results, and timestamps that can expose whether an email is genuine or a carefully crafted phishing attempt.
+        </p>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">What Are Email Headers?</h2>
+        <p className="text-gray-700 mb-6">
+          When your mail client shows you the "From" name and subject line, it's hiding dozens of technical header lines. These headers are added by every mail server the message passes through, creating a complete audit trail. Knowing how to read them can reveal spoofed senders and compromised accounts.
+        </p>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Key Headers Explained</h2>
+
+        <div className="space-y-4 mb-8">
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-gray-800 mb-2">📬 Received Headers</h3>
+            <p className="text-gray-600">Each mail server that handles the message adds a "Received:" header. Reading them <strong>bottom to top</strong> gives the true routing path. Unexpected geographic hops or unusual relay servers are red flags.</p>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-gray-800 mb-2">↩️ From vs. Return-Path</h3>
+            <p className="text-gray-600">Phishers often set a legitimate-looking "From" display name while the actual Return-Path (where bounces go) reveals the real sender address. These should match for legitimate email.</p>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-gray-800 mb-2">✅ SPF — Sender Policy Framework</h3>
+            <p className="text-gray-600">A DNS record specifying which servers are authorized to send email for a domain. An <strong>SPF: fail</strong> or <strong>softfail</strong> means the sending server isn't authorized — a major red flag for spoofing.</p>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-gray-800 mb-2">🔑 DKIM — DomainKeys Identified Mail</h3>
+            <p className="text-gray-600">A cryptographic signature proving the email wasn't altered in transit. A <strong>DKIM: fail</strong> means the message was tampered with or forged after leaving the sender's server.</p>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-gray-800 mb-2">🛡️ DMARC — Domain-based Message Authentication</h3>
+            <p className="text-gray-600">Combines SPF and DKIM and tells receiving servers what to do with failures: reject, quarantine, or report. A missing DMARC record leaves a domain wide open to impersonation.</p>
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Real Phishing Example</h2>
+        <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-8">
+          <h3 className="font-bold text-red-800 mb-3">⚠️ Fake "PayPal" Email Breakdown</h3>
+          <p className="text-red-700 mb-3">Your mail client shows: <strong>From: service@paypal.com</strong></p>
+          <p className="text-red-700 mb-1">But the raw headers reveal:</p>
+          <ul className="space-y-1 text-red-600 text-sm font-mono bg-red-100 p-3 rounded">
+            <li>Return-Path: bounce@random-domain.ru</li>
+            <li>Received: from mail.random-domain.ru (192.168.45.12)</li>
+            <li>Authentication-Results: spf=fail; dkim=none; dmarc=fail</li>
+          </ul>
+          <p className="text-red-700 mt-3">Three authentication failures and a Russian relay server — a clear phishing email despite the legitimate-looking From address.</p>
+        </div>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">How to Get Email Headers</h2>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8">
+          <div className="grid md:grid-cols-3 gap-4">
+            <div>
+              <h3 className="font-semibold text-gray-800 mb-2">📧 Gmail</h3>
+              <ol className="text-sm text-gray-600 space-y-1">
+                <li>1. Open the email</li>
+                <li>2. Click the three-dot menu (⋮)</li>
+                <li>3. Select "Show original"</li>
+              </ol>
+            </div>
+            <div>
+              <h3 className="font-semibold text-gray-800 mb-2">📨 Outlook</h3>
+              <ol className="text-sm text-gray-600 space-y-1">
+                <li>1. Open the email</li>
+                <li>2. Click File → Properties</li>
+                <li>3. Find "Internet headers"</li>
+              </ol>
+            </div>
+            <div>
+              <h3 className="font-semibold text-gray-800 mb-2">🍎 Apple Mail</h3>
+              <ol className="text-sm text-gray-600 space-y-1">
+                <li>1. Open the email</li>
+                <li>2. Click View menu</li>
+                <li>3. Message → All Headers</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+          <h3 className="text-lg font-bold text-blue-800 mb-3">✉️ Analyze Headers Instantly</h3>
+          <p className="text-blue-700">
+            Copy the raw headers from any suspicious email and paste them into LSafe's free <strong>Email Header Analyzer</strong>. It parses SPF, DKIM, and DMARC results, visualizes the routing hops with timestamps, identifies the origin IP, and gives an overall risk score — all instantly in your browser with no data sent to any server.
+          </p>
+        </div>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">What to Do With a Suspicious Email</h2>
+        <ol className="list-decimal list-inside space-y-3 text-gray-700 mb-8">
+          <li>Do <strong>not</strong> click any links or download attachments</li>
+          <li>Analyze the headers using LSafe's Email Header Analyzer</li>
+          <li>If SPF, DKIM, or DMARC fail — treat it as phishing</li>
+          <li>Report it to your email provider's abuse team</li>
+          <li>Forward to the impersonated company's phishing report address</li>
+          <li>Delete the email from your inbox and trash</li>
+        </ol>
+      </>
+    )
   }
 };
 
 const relatedPosts: Record<string, string[]> = {
-  'phishing-attacks': ['malware-protection', 'password-security'],
+  'phishing-attacks': ['email-header-analyzer', 'malware-protection'],
   'malware-protection': ['phishing-attacks', 'mobile-device-security'],
   'safe-online-shopping': ['phishing-attacks', 'password-security'],
-  'social-media-security': ['password-security', 'phishing-attacks'],
+  'social-media-security': ['browser-fingerprint', 'cookie-tracker-analyzer'],
   'mobile-device-security': ['malware-protection', 'safe-online-shopping'],
   'password-security': ['social-media-security', 'mobile-device-security'],
+  'browser-fingerprint': ['cookie-tracker-analyzer', 'social-media-security'],
+  'cookie-tracker-analyzer': ['browser-fingerprint', 'social-media-security'],
+  'email-header-analyzer': ['phishing-attacks', 'malware-protection'],
 };
 
 const BlogPost: React.FC = () => {
