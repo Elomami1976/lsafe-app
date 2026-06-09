@@ -16,13 +16,18 @@ import SafetyTips from './pages/SafetyTips';
 import BrowserFingerprint from './pages/BrowserFingerprint';
 import CookieAnalyzer from './pages/CookieAnalyzer';
 import EmailHeaderAnalyzer from './pages/EmailHeaderAnalyzer';
+import WorldCupScamChecker from './pages/WorldCupScamChecker';
 
 const App: React.FC = () => {
   return (
     <ThemeProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Index />} />
+          {/* During World Cup 2026, the World Cup Scam Checker is the main landing page. */}
+          <Route path="/" element={<WorldCupScamChecker />} />
+          <Route path="/world-cup-scam-checker" element={<WorldCupScamChecker />} />
+          {/* The original URL scanner remains available at /url-scanner. */}
+          <Route path="/url-scanner" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/privacy" element={<Privacy />} />

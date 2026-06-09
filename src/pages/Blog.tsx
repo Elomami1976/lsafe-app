@@ -2,11 +2,31 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import PageSEO from '../components/PageSEO';
-import { Shield, AlertTriangle, Lock, Mail, Globe, Smartphone, CreditCard, Users, BookOpen, Clock, ChevronRight, Fingerprint, Cookie } from 'lucide-react';
+import { Shield, AlertTriangle, Lock, Mail, Globe, Smartphone, CreditCard, Users, BookOpen, Clock, ChevronRight, Fingerprint, Cookie, Trophy, Ticket } from 'lucide-react';
 
 const LSaveLogo = '/LSave4.png';
 
 const blogPosts = [
+  {
+    id: 'fifa-world-cup-scams',
+    title: 'FIFA World Cup Scams to Avoid in 2026',
+    excerpt: 'Fake ticket sites, WhatsApp prize messages, "FIFA winner" emails, and pirate streams full of malware — every active World Cup 2026 scam pattern, with real examples.',
+    icon: Trophy,
+    color: 'green',
+    readTime: '11 min read',
+    category: 'World Cup 2026',
+    content: `Inside this guide: fake FIFA giveaways, fraudulent hospitality packages, ticket-resale scams, sponsor impersonation, and how to verify any World Cup link before you click.`,
+  },
+  {
+    id: 'fake-ticket-websites-world-cup',
+    title: 'Fake Ticket Websites During the World Cup',
+    excerpt: 'How scammers clone FIFA ticket pages, why "cheap" tickets are always fraud, and a step-by-step checklist to verify any seller is genuine before you enter your card details.',
+    icon: Ticket,
+    color: 'orange',
+    readTime: '9 min read',
+    category: 'World Cup 2026',
+    content: `A detailed look at how cloned ticket sites operate, the warning signs to spot fake FIFA ticket vendors, and how to safely buy tickets through official channels only.`,
+  },
   {
     id: 'phishing-attacks',
     title: 'How to Identify and Avoid Phishing Attacks in 2026',
@@ -410,22 +430,22 @@ const Blog: React.FC = () => {
       {/* Featured Article */}
       <section className="py-12 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-2xl p-8 text-white shadow-xl">
+          <div className="bg-gradient-to-r from-emerald-600 via-green-700 to-slate-800 rounded-2xl p-8 text-white shadow-xl">
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="flex-shrink-0">
                 <div className="bg-white/20 backdrop-blur-sm rounded-full p-6">
-                  <AlertTriangle className="h-16 w-16" />
+                  <Trophy className="h-16 w-16 text-yellow-300" />
                 </div>
               </div>
               <div className="flex-1 text-center md:text-left">
-                <span className="inline-block bg-white/20 px-3 py-1 rounded-full text-sm font-medium mb-3">
-                  Featured Article
+                <span className="inline-block bg-yellow-400/30 text-yellow-100 px-3 py-1 rounded-full text-sm font-medium mb-3">
+                  Featured · World Cup 2026
                 </span>
-                <h2 className="text-3xl font-bold mb-3">How to Identify and Avoid Phishing Attacks in 2026</h2>
+                <h2 className="text-3xl font-bold mb-3">FIFA World Cup Scams to Avoid in 2026</h2>
                 <p className="text-lg opacity-90 mb-4">
-                  Phishing attacks are becoming more sophisticated. Learn the latest techniques and protect yourself.
+                  The 2026 World Cup is the biggest scam season of the year. Learn every active fraud pattern — and how to spot them before they cost you.
                 </p>
-                <Link to="/blog/phishing-attacks" className="inline-flex items-center gap-2 bg-white text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                <Link to="/blog/fifa-world-cup-scams" className="inline-flex items-center gap-2 bg-white text-emerald-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
                   Read Full Guide <ChevronRight className="w-5 h-5" />
                 </Link>
               </div>

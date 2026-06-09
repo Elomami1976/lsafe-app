@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import PageSEO from '../components/PageSEO';
-import { Shield, AlertTriangle, Lock, Mail, Globe, Smartphone, CreditCard, Users, ArrowLeft, Clock, ChevronRight, Fingerprint, Cookie } from 'lucide-react';
+import { Shield, AlertTriangle, Lock, Mail, Globe, Smartphone, CreditCard, Users, ArrowLeft, Clock, ChevronRight, Fingerprint, Cookie, Trophy, Ticket } from 'lucide-react';
 
 const LSaveLogo = '/LSave4.png';
 
@@ -936,6 +936,209 @@ const blogPosts: Record<string, {
         </ol>
       </>
     )
+  },
+  'fifa-world-cup-scams': {
+    title: 'FIFA World Cup Scams to Avoid in 2026',
+    description: 'Fake ticket sites, WhatsApp prize messages, "FIFA winner" emails, and pirate streams full of malware — every active World Cup 2026 scam pattern, with real examples.',
+    icon: Trophy,
+    color: 'green',
+    readTime: '11 min read',
+    category: 'World Cup 2026',
+    content: (
+      <>
+        <p className="text-lg text-gray-700 mb-6">
+          The 2026 FIFA World Cup — co-hosted by the United States, Canada, and Mexico — is the largest sporting event in history. It is also the largest <strong>scam season</strong> of the year. Criminal networks have spent months preparing fake ticket sites, phishing campaigns, fraudulent hospitality packages, and malware-laden streaming pages. This guide breaks down every active scam pattern, shows real examples, and tells you exactly how to stay safe.
+        </p>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">1. Fake FIFA Ticket Websites</h2>
+        <p className="text-gray-700 mb-4">
+          The #1 World Cup scam every cycle. Scammers register domains like <code className="text-sm">fifa-tickets-2026.top</code>, <code className="text-sm">worldcup-ticketshop.live</code>, or <code className="text-sm">fifa-ticketing.online</code> and clone the official FIFA ticketing UI pixel-for-pixel. The site accepts your card, sends a fake confirmation, and you discover the fraud only at the stadium gate.
+        </p>
+        <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-8">
+          <h3 className="font-bold text-red-800 mb-2">⚠️ The only legitimate channels:</h3>
+          <ul className="text-red-700 space-y-1">
+            <li>• <strong>tickets.fifa.com</strong> — official primary sales</li>
+            <li>• <strong>onlocationexp.com</strong> — official hospitality (On Location)</li>
+            <li>• Verified national FAs in qualifying countries</li>
+          </ul>
+          <p className="text-red-700 mt-3">Anyone else, including "exclusive resellers" on social media, is high-risk or outright fraud.</p>
+        </div>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">2. "You Won FIFA Tickets" WhatsApp Scams</h2>
+        <p className="text-gray-700 mb-4">
+          A message arrives — sometimes in Arabic, sometimes English — claiming you've been selected to receive 2 free World Cup tickets. To "claim", you must:
+        </p>
+        <ul className="list-disc list-inside text-gray-700 space-y-1 mb-4">
+          <li>Pay a small "shipping" or "tax" fee in <strong>gift cards or bitcoin</strong></li>
+          <li>Forward the message to 10–20 friends</li>
+          <li>Enter your bank login on a lookalike "verification" page</li>
+        </ul>
+        <p className="text-gray-700 mb-8">
+          FIFA does <strong>not</strong> run prize draws, lotteries, or WhatsApp giveaways. Any message in this format is fraud — block the sender and delete.
+        </p>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">3. Fake Sponsor Giveaways</h2>
+        <p className="text-gray-700 mb-8">
+          Scammers impersonate FIFA sponsors (Coca-Cola, Adidas, Visa, Hisense, Qatar Airways, etc.) with fake "Brand X is giving away 2026 World Cup packages" promos. They harvest personal data, payment details, or push malware downloads disguised as "claim apps". Always verify promotions on the sponsor's <em>official</em> website — never via a link in a DM.
+        </p>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">4. Pirate Streaming Sites &amp; Malware</h2>
+        <p className="text-gray-700 mb-4">
+          Searching "world cup 2026 free hd stream" sends you straight into the malware zone. These sites monetize via:
+        </p>
+        <ul className="list-disc list-inside text-gray-700 space-y-1 mb-4">
+          <li>Drive-by downloads disguised as a "video player update"</li>
+          <li>Browser hijackers and crypto-miners running on every page view</li>
+          <li>Fake "subscribe now" overlays that steal credit cards</li>
+          <li>Affiliate redirects to unlicensed gambling sites</li>
+        </ul>
+        <p className="text-gray-700 mb-8">
+          Stream only via your country's licensed broadcaster — BBC iPlayer / ITV (UK), FOX / Telemundo / Peacock (US), beIN / SSC / MBC (MENA), TSN / CBC (Canada), Televisa (Mexico), and so on. If a streaming site asks you to install <em>anything</em>, leave immediately.
+        </p>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">5. Hospitality &amp; Travel Package Fraud</h2>
+        <p className="text-gray-700 mb-8">
+          Fraudulent travel agencies sell "all-inclusive World Cup packages" combining flights, hotels, and tickets. The tickets are forged; the hotel bookings are fake. Buy hospitality only from <strong>On Location</strong> (FIFA's official partner) and verify any travel agent through your country's official tourism authority before paying.
+        </p>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">6. Phishing Emails Impersonating FIFA</h2>
+        <p className="text-gray-700 mb-4">
+          Generic "Dear Customer, please verify your ticket order" emails with urgent deadlines and links to <code>fifa.tickets-verify.gq</code>-style domains. Real FIFA emails:
+        </p>
+        <ul className="list-disc list-inside text-gray-700 space-y-1 mb-8">
+          <li>Address you by your registered name</li>
+          <li>Come from the <code>@fifa.com</code> domain (pass SPF, DKIM, DMARC)</li>
+          <li>Never demand action within 24 hours under threat of cancellation</li>
+          <li>Never ask for full card number, CVV, or a one-time code by email</li>
+        </ul>
+
+        <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-6 mb-8">
+          <h3 className="text-lg font-bold text-emerald-800 mb-3">🛡️ Check Any Link Before You Click</h3>
+          <p className="text-emerald-700 mb-4">
+            Use LSafe's free <strong>World Cup Scam Checker</strong> to scan a streaming URL, ticket page, WhatsApp message, or email. It catches lookalike FIFA domains, payment red flags, urgency phrasing, and known pirate-stream patterns in seconds — all in your browser, nothing leaves your device.
+          </p>
+          <Link to="/world-cup-scam-checker" className="inline-flex items-center gap-2 bg-emerald-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-emerald-700 transition">
+            <Trophy className="w-4 h-4" /> Open the Scam Checker
+          </Link>
+        </div>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Quick Survival Checklist</h2>
+        <div className="grid md:grid-cols-2 gap-4 mb-8">
+          <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+            <h4 className="font-bold text-green-800 mb-2">✅ Do</h4>
+            <ul className="text-sm text-green-700 space-y-1">
+              <li>Buy tickets only at tickets.fifa.com</li>
+              <li>Watch via your licensed national broadcaster</li>
+              <li>Verify every link with LSafe before clicking</li>
+              <li>Enable 2FA on your email and FIFA account</li>
+              <li>Pay only by credit card (chargeback protection)</li>
+            </ul>
+          </div>
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+            <h4 className="font-bold text-red-800 mb-2">❌ Don't</h4>
+            <ul className="text-sm text-red-700 space-y-1">
+              <li>Buy from social-media "ticket sellers"</li>
+              <li>Click links in unsolicited WhatsApp messages</li>
+              <li>Pay in gift cards, crypto, or wire transfer</li>
+              <li>Install any "video player" from a streaming site</li>
+              <li>Trust urgency — real FIFA never rushes you</li>
+            </ul>
+          </div>
+        </div>
+      </>
+    )
+  },
+  'fake-ticket-websites-world-cup': {
+    title: 'Fake Ticket Websites During the World Cup',
+    description: 'How scammers clone FIFA ticket pages, why "cheap" tickets are always fraud, and a step-by-step checklist to verify any seller is genuine before you enter your card details.',
+    icon: Ticket,
+    color: 'orange',
+    readTime: '9 min read',
+    category: 'World Cup 2026',
+    content: (
+      <>
+        <p className="text-lg text-gray-700 mb-6">
+          Counterfeit ticket websites are the most profitable World Cup scam — and the easiest one to fall for. Fraudsters spend months building convincing clones of the official FIFA ticketing portal, then drive traffic to them through Google Ads, SEO, fake influencer posts, and WhatsApp blasts. Here is how they operate, how to identify them, and how to buy World Cup 2026 tickets safely.
+        </p>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">How a Fake Ticket Site Works</h2>
+        <ol className="list-decimal list-inside text-gray-700 space-y-2 mb-8">
+          <li><strong>Domain registration</strong> — scammers buy cheap lookalike domains: <code>fifa-tickets-2026.com</code>, <code>worldcup-ticketshop.live</code>, <code>fifaworldcup.tickets-online.top</code>.</li>
+          <li><strong>Visual cloning</strong> — they copy the official site's HTML, CSS, logos and even the chatbot widget.</li>
+          <li><strong>SEO &amp; ads</strong> — paid search ads outrank the real FIFA portal for "cheap world cup tickets".</li>
+          <li><strong>Checkout harvest</strong> — your card details are stolen the second you submit them.</li>
+          <li><strong>Fake confirmation</strong> — you receive a real-looking PDF "ticket" by email and discover it's invalid only at the stadium turnstile.</li>
+        </ol>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">7 Warning Signs of a Fake Ticket Site</h2>
+        <div className="space-y-4 mb-8">
+          {[
+            { n: 1, title: 'Domain is not tickets.fifa.com', desc: 'Anything else — "fifa-tickets.com", "worldcuptickets2026.live", a hyphenated brand variant — is not FIFA. Period.' },
+            { n: 2, title: 'Prices look too cheap', desc: 'World Cup tickets have a fixed pricing structure published by FIFA. Anyone advertising "50% off final tickets" is lying.' },
+            { n: 3, title: 'Accepts only crypto or wire transfer', desc: 'Real sellers accept major credit cards because cards offer chargeback protection. Scammers prefer irreversible payment methods.' },
+            { n: 4, title: 'No company registration or address', desc: 'Legitimate ticket sellers publish their company name, registration number, and a physical address. Fake sites have only a contact form.' },
+            { n: 5, title: 'Domain registered in the last 6 months', desc: 'You can check a domain\'s age using free WHOIS lookups. A brand-new domain selling "official" tickets is a giant red flag.' },
+            { n: 6, title: 'Browser flags an invalid certificate', desc: 'If your browser shows "Not Secure" or warns about a certificate, leave immediately and do not enter anything.' },
+            { n: 7, title: 'Pressure tactics: "only 3 left, expires in 5 minutes"', desc: 'Scammers manufacture urgency to short-circuit your judgment. Real ticket inventory does not behave like a flash sale.' },
+          ].map(item => (
+            <div key={item.n} className="bg-white border border-gray-200 rounded-lg p-4 flex gap-4">
+              <div className="bg-orange-100 text-orange-700 rounded-full w-9 h-9 flex items-center justify-center font-bold shrink-0">{item.n}</div>
+              <div>
+                <h4 className="font-bold text-gray-800 mb-1">{item.title}</h4>
+                <p className="text-sm text-gray-600">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">How to Verify a Ticket Seller is Real</h2>
+        <ol className="list-decimal list-inside text-gray-700 space-y-2 mb-8">
+          <li>Open a new browser tab and type <strong>tickets.fifa.com</strong> directly — never click a link from email/WhatsApp.</li>
+          <li>Confirm the exact domain in your address bar (no extra subdomains, no hyphens, no .top/.live TLDs).</li>
+          <li>Verify the certificate by clicking the padlock — issuer should be a major CA, common name should be <code>*.fifa.com</code>.</li>
+          <li>For hospitality, confirm the seller is <strong>On Location</strong> (onlocationexp.com) — FIFA's only authorized hospitality partner.</li>
+          <li>Pay with a <strong>credit card</strong> only. Never debit, never crypto, never bank transfer.</li>
+          <li>Run the URL through LSafe's <Link to="/world-cup-scam-checker" className="text-blue-600 underline font-semibold">World Cup Scam Checker</Link> before submitting any details.</li>
+        </ol>
+
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+          <h3 className="text-lg font-bold text-blue-800 mb-3">🎟️ Already Bought from a Suspicious Site?</h3>
+          <ol className="text-blue-700 space-y-1 list-decimal list-inside text-sm">
+            <li>Contact your card issuer <strong>immediately</strong> and request a chargeback.</li>
+            <li>Change your password if you created an account on the fake site.</li>
+            <li>Report the site to FIFA at <code>ticketing@fifa.org</code> and to your national consumer protection agency.</li>
+            <li>Monitor your card statement for additional fraudulent charges.</li>
+            <li>Scan your device for malware — some fake ticket sites also drop spyware.</li>
+          </ol>
+        </div>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Real Examples Seen in 2026</h2>
+        <p className="text-gray-700 mb-4">
+          A sample of domains LSafe has flagged as fake World Cup ticket sites in the lead-up to the 2026 tournament:
+        </p>
+        <ul className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-8 font-mono text-sm text-gray-700 space-y-1">
+          <li>• fifa-tickets-2026.top</li>
+          <li>• worldcup-ticketshop.live</li>
+          <li>• fifa-ticketing-online.xyz</li>
+          <li>• fifaworldcup2026.tickets-buy.com</li>
+          <li>• cheap-fifa-tickets.online</li>
+          <li>• fifa.tickets-verify.gq</li>
+        </ul>
+        <p className="text-gray-700 mb-8">
+          The list grows daily. The lesson stays the same: <strong>only tickets.fifa.com is real</strong>. Bookmark it now.
+        </p>
+
+        <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-6">
+          <h3 className="text-lg font-bold text-emerald-800 mb-3">Scan any ticket link in seconds</h3>
+          <p className="text-emerald-700 mb-4">
+            Paste a suspicious ticket URL into LSafe's World Cup Scam Checker. It detects FIFA-domain lookalikes, risky TLDs, hidden redirects, and ticket-resale scam keywords — instantly.
+          </p>
+          <Link to="/world-cup-scam-checker" className="inline-flex items-center gap-2 bg-emerald-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-emerald-700 transition">
+            <Ticket className="w-4 h-4" /> Check a Ticket Link Now
+          </Link>
+        </div>
+      </>
+    )
   }
 };
 
@@ -949,6 +1152,8 @@ const relatedPosts: Record<string, string[]> = {
   'browser-fingerprint': ['cookie-tracker-analyzer', 'social-media-security'],
   'cookie-tracker-analyzer': ['browser-fingerprint', 'social-media-security'],
   'email-header-analyzer': ['phishing-attacks', 'malware-protection'],
+  'fifa-world-cup-scams': ['fake-ticket-websites-world-cup', 'phishing-attacks'],
+  'fake-ticket-websites-world-cup': ['fifa-world-cup-scams', 'safe-online-shopping'],
 };
 
 const BlogPost: React.FC = () => {

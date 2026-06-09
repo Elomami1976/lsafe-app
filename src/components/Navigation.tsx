@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { Menu, X, Moon, Sun, ChevronDown, Fingerprint, Cookie, Mail, Shield } from 'lucide-react';
+import { Menu, X, Moon, Sun, ChevronDown, Fingerprint, Cookie, Mail, Shield, Trophy, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 
@@ -16,6 +16,8 @@ const navItems = [
 ];
 
 const toolItems = [
+  { to: '/world-cup-scam-checker', label: 'World Cup Scam Checker', icon: Trophy, desc: 'Detect fake FIFA tickets, phishing & unsafe streams', color: 'text-emerald-500', badge: 'HOT' as const },
+  { to: '/url-scanner', label: 'URL Scanner', icon: Globe, desc: 'Full security scan of any link', color: 'text-blue-500' },
   { to: '/browser-fingerprint', label: 'Browser Fingerprint', icon: Fingerprint, desc: 'See your digital tracking identity', color: 'text-violet-500' },
   { to: '/cookie-analyzer', label: 'Cookie & Tracker Analyzer', icon: Cookie, desc: 'Detect hidden trackers on any site', color: 'text-orange-500' },
   { to: '/email-header-analyzer', label: 'Email Header Analyzer', icon: Mail, desc: 'Detect phishing & verify authentication', color: 'text-cyan-500' },
@@ -155,8 +157,15 @@ const Navigation: React.FC = () => {
                           <div className={`mt-0.5 ${tool.color}`}>
                             <tool.icon className="w-5 h-5" />
                           </div>
-                          <div>
-                            <div className="font-semibold text-sm text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{tool.label}</div>
+                          <div className="flex-1 min-w-0">
+                            <div className="font-semibold text-sm text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-1.5">
+                              {tool.label}
+                              {tool.badge && (
+                                <span className="text-[9px] font-bold bg-gradient-to-r from-red-500 to-orange-500 text-white px-1.5 py-0.5 rounded-full">
+                                  {tool.badge}
+                                </span>
+                              )}
+                            </div>
                             <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{tool.desc}</div>
                           </div>
                         </Link>
@@ -312,7 +321,12 @@ const Navigation: React.FC = () => {
                               className="flex items-center gap-3 px-7 py-3 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                             >
                               <tool.icon className={`w-4 h-4 ${tool.color}`} />
-                              {tool.label}
+                              <span className="flex-1">{tool.label}</span>
+                              {tool.badge && (
+                                <span className="text-[9px] font-bold bg-gradient-to-r from-red-500 to-orange-500 text-white px-1.5 py-0.5 rounded-full">
+                                  {tool.badge}
+                                </span>
+                              )}
                             </Link>
                           </li>
                         ))}
